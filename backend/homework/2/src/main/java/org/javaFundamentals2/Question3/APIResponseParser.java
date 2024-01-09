@@ -1,10 +1,8 @@
 package org.javaFundamentals2.Question3;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 public class APIResponseParser {
-    private static final Logger logger = LoggerFactory.getLogger(APIResponseParser.class);
     public static String parser(String response, String startRule, String endRule) {
         int startIndex = response.indexOf(startRule) + startRule.length();
         int endIndex = response.indexOf(endRule, startIndex);
@@ -80,11 +78,8 @@ public class APIResponseParser {
                 "</work>";
 
         Book obj1 = parse(response);
-        if (obj1 != null) {
-            String title = obj1.getTitle();
+
             obj1.printAllAttributes();
-        } else {
-            logger.error("Failed to parse the response");
-        }
+
     }
 }

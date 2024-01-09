@@ -3,7 +3,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Book {
-    private static final Logger logger = LoggerFactory.getLogger(APIResponseParser.class);
+    private static final Logger logger = LoggerFactory.getLogger(Book.class);
 
     private String title;
     private int publicationYear;
