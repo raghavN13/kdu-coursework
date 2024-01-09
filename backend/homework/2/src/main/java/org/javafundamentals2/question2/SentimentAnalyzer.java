@@ -48,8 +48,8 @@ public class SentimentAnalyzer {
     }
 
     private static int checkForWasPhrasePattern(String review, String feature, String[] posOpinionWords, String[] negOpinionWords) {
-        String pattern1 = feature + " was ";
-        String pattern = pattern1.toLowerCase();
+        String pattern = feature + " was ";
+        pattern = pattern.toLowerCase();
 
         for (String posOpinionWord : posOpinionWords) {
             String updatedPattern = pattern + posOpinionWord;
@@ -70,8 +70,8 @@ public class SentimentAnalyzer {
 
     private static int checkForOpinionFirstPattern(String review, String feature, String[] posOpinionWords, String[] negOpinionWords) {
         for (String posOpinionWord : posOpinionWords) {
-            String updatedPattern1 = posOpinionWord + " " + feature;
-            String updatedPattern = updatedPattern1.toLowerCase();
+            String updatedPattern = posOpinionWord + " " + feature;
+            updatedPattern = updatedPattern.toLowerCase();
             if (review.contains(updatedPattern)) {
                 return 1;
             }
@@ -79,7 +79,7 @@ public class SentimentAnalyzer {
 
         for (String negOpinionWord : negOpinionWords) {
             String updatedPattern = negOpinionWord + " " + feature;
-            String updatedPattern1 = updatedPattern.toLowerCase();
+            updatedPattern = updatedPattern.toLowerCase();
             if (review.contains(updatedPattern)) {
                 return -1;
             }

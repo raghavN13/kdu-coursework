@@ -39,9 +39,9 @@ public class APIResponseParser {
 
         String[] ratingsStartRule = {"<ratings_count type=\"integer\">"};
         String ratings = parser(response, ratingsStartRule, endRule);
-        ratings = ratings.replaceAll(",", "");
-        int rating_count = Integer.parseInt(ratings);
-        book.setRatingsCount(rating_count);
+        ratings = ratings.replace(",", "");
+        int ratingCount = Integer.parseInt(ratings);
+        book.setRatingsCount(ratingCount);
 
         startRule = "<image_url>";
         String imageUrl = parser(response, startRule, endRule);

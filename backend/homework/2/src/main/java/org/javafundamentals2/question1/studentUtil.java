@@ -8,7 +8,7 @@ public class studentUtil {
 
         private static double[] calculateGPA(int[] studentIdList, char[][] studentsGrades) {
             if (studentIdList == null || studentsGrades == null || studentIdList.length != studentsGrades.length) {
-                return null; // Parameter validation
+                return new double[0];
             }
 
             int studentCount = studentIdList.length;
@@ -18,7 +18,7 @@ public class studentUtil {
                 char[] temp = studentsGrades[i];
 
                 if (temp == null || temp.length == 0) {
-                    return null;
+                    return new double[0];
                 }
 
                 int gradesSize = temp.length;
@@ -44,14 +44,11 @@ public class studentUtil {
 
     public static int[] getStudentsByGPA(double lower, double higher, int[] studentIdList, char[][] studentsGrades) {
         if (lower < 0 || higher < 0 || lower > higher || studentIdList == null || studentsGrades == null || studentIdList.length != studentsGrades.length) {
-            return null;
+            return new int[0];
         }
 
         double[] gpaStudent = calculateGPA(studentIdList, studentsGrades);
 
-        if (gpaStudent == null) {
-            return null;
-        }
 
         int count = 0;
         for (double gpa : gpaStudent) {
