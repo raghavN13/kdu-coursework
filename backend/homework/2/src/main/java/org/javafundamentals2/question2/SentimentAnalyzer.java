@@ -1,7 +1,6 @@
 package org.javafundamentals2.question2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.*;
 
 public class SentimentAnalyzer {
     private static final Logger logger = LoggerFactory.getLogger(SentimentAnalyzer.class);
@@ -107,7 +106,7 @@ public class SentimentAnalyzer {
 
             int[] ans = detectProsAndCons(review, featureSet, posOpinionWords, negOpinionWords);
 
-            logger.info("Result: {}", (Object) ans);
+            logger.info("Result: {}", ans);
 
         } catch (IllegalArgumentException e) {
             logger.error("Error: {}", e.getMessage());

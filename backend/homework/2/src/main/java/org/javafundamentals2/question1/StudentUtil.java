@@ -1,7 +1,7 @@
 package org.javafundamentals2.question1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.*;
+
 
 public class StudentUtil {
         private static final Logger logger = LoggerFactory.getLogger(StudentUtil.class);
@@ -76,8 +76,8 @@ public class StudentUtil {
 
 
         int[] filteredStudents = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrades);
-        logger.info("GPA Students: {}", (Object) gpaStudent);
-        logger.info("Filtered Students: {}", (Object) filteredStudents);
+        logger.info("GPA Students: {}", gpaStudent);
+        logger.info("Filtered Students: {}", filteredStudents);
 
     }
 }
