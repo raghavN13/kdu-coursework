@@ -1,4 +1,4 @@
-package org.javaFundamentals2.Question3;
+package org.javafundamentals2.question3;
 
 
 
@@ -55,28 +55,28 @@ public class APIResponseParser {
     }
 
     public static void main(String[] args) {
-        String response = "<work>\n" +
-                "<id type=\"integer\">2361393</id>\n" +
-                "<books_count type=\"integer\">813</books_count>\n" +
-                "<ratings_count type=\"integer\">1,16,315</ratings_count>\n" +
-                "<text_reviews_count type=\"integer\">3439</text_reviews_count>\n" +
-                "<original_publication_year type=\"integer\">1854</original_publication_year>\n" +
-                "<original_publication_month type=\"integer\" nil=\"true\"/>\n" +
-                "<original_publication_day type=\"integer\" nil=\"true\"/>\n" +
-                "<average_rating>3.79</average_rating>\n" +
-                "<best_book type=\"Book\">\n" +
-                "<id type=\"integer\">16902</id>\n" +
-                "<title>Walden</title>\n" +
-                "<author>\n" +
-                "<id type=\"integer\">10264</id>\n" +
-                "<name>Henry David Thoreau</name>\n" +
-                "</author>\n" +
-                "<image_url>http://images.gr-assets.com/books/1465675526m/16902.jpg</image_url>\n" +
-                "<small_image_url>http://images.gr-assets.com/books/1465675526s/16902.jpg</small\n" +
-                "_image_url>\n" +
-                "</best_book>\n" +
-                "</work>";
-
+        String response = """
+        <work>
+            <id type="integer">2361393</id>
+            <books_count type="integer">813</books_count>
+            <ratings_count type="integer">1,16,315</ratings_count>
+            <text_reviews_count type="integer">3439</text_reviews_count>
+            <original_publication_year type="integer">1854</original_publication_year>
+            <original_publication_month type="integer" nil="true"/>
+            <original_publication_day type="integer" nil="true"/>
+            <average_rating>3.79</average_rating>
+            <best_book type="Book">
+                <id type="integer">16902</id>
+                <title>Walden</title>
+                <author>
+                    <id type="integer">10264</id>
+                    <name>Henry David Thoreau</name>
+                </author>
+                <image_url>http://images.gr-assets.com/books/1465675526m/16902.jpg</image_url>
+                <small_image_url>http://images.gr-assets.com/books/1465675526s/16902.jpg</small_image_url>
+            </best_book>
+        </work>
+        """;
         Book obj1 = parse(response);
 
             obj1.printAllAttributes();
