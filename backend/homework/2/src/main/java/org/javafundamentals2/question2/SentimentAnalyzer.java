@@ -107,7 +107,7 @@ public class SentimentAnalyzer {
 
             int[] ans = detectProsAndCons(review, featureSet, posOpinionWords, negOpinionWords);
 
-            logger.info("Result: {}", Arrays.toString(ans));
+            logger.info("Result: {}", (Object) ans);
 
         } catch (IllegalArgumentException e) {
             logger.error("Error: {}", e.getMessage());

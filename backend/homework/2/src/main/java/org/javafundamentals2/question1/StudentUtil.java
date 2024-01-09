@@ -76,7 +76,8 @@ public class StudentUtil {
 
 
         int[] filteredStudents = getStudentsByGPA(3.2, 3.5, studentIdList, studentsGrades);
-        logger.info(Arrays.toString(gpaStudent));
-        logger.info(Arrays.toString(filteredStudents));
+        logger.info("GPA Students: {}", (Object) gpaStudent);
+        logger.info("Filtered Students: {}", (Object) filteredStudents);
+
     }
 }
