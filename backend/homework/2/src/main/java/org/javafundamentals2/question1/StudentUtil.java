@@ -3,8 +3,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.*;
 
-public class studentUtil {
-        private static final Logger logger = LoggerFactory.getLogger(studentUtil.class);
+public class StudentUtil {
+        private static final Logger logger = LoggerFactory.getLogger(StudentUtil.class);
 
         private static double[] calculateGPA(int[] studentIdList, char[][] studentsGrades) {
             if (studentIdList == null || studentsGrades == null || studentIdList.length != studentsGrades.length) {

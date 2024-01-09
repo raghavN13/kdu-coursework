@@ -110,7 +110,8 @@ public class SentimentAnalyzer {
             logger.info("Result: {}", Arrays.toString(ans));
 
         } catch (IllegalArgumentException e) {
-            logger.error("Error: " + e.getMessage());
+            logger.error("Error: {}", e.getMessage());
+
         }
     }
 }
