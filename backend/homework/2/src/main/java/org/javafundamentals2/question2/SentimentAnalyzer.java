@@ -1,4 +1,4 @@
-package org.JavaFundamentals2.question2;
+package org.javafundamentals2.question2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

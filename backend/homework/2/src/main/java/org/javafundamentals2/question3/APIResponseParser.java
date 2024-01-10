@@ -1,4 +1,4 @@
-package org.JavaFundamentals2.question3;
+package org.javafundamentals2.question3;
 
 
 
