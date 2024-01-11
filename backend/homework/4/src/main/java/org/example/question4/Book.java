@@ -1,7 +1,7 @@
 package org.example.question4;
 
 
-class book implements Comparable {
+class Book implements Comparable {
     private String title;
     private String author;
     private int year;
@@ -30,7 +30,7 @@ class book implements Comparable {
         this.year = year;
     }
 
-    public book(String title, String author, int year) {
+    public Book(String title, String author, int year) {
         super();
         this.title = title;
         this.author = author;
@@ -60,7 +60,7 @@ class book implements Comparable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        book other = (book) obj;
+        Book other = (Book) obj;
         if (author == null) {
             if (other.author != null)
                 return false;
@@ -73,11 +73,12 @@ class book implements Comparable {
             return false;
         if (year != other.year)
             return false;
+
         return true;
     }
 
     public int compareTo(Object book) {
-        return getTitle().compareTo(((org.example.question4.book)book).getTitle()); // utilizing String's compareTo
+        return getTitle().compareTo(((Book)book).getTitle()); // utilizing String's compareTo
     }
 
 }

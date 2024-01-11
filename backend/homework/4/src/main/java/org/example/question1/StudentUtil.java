@@ -2,10 +2,10 @@ package org.example.question1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class studentutil {
-    private static final Logger logger = LoggerFactory.getLogger(studentutil.class);
+public class StudentUtil {
+    private static final Logger logger = LoggerFactory.getLogger(StudentUtil.class);
 
-    public static double[] calculateGPA(int[] studentIdList, char[][] studentsGrades) throws missinggradeexception {
+    public static double[] calculateGPA(int[] studentIdList, char[][] studentsGrades) throws MissingGradeException {
         if (studentIdList.length != studentsGrades.length) {
             throw new IllegalArgumentException("studentIdList & studentsGrades are out-of-sync. studentIdList.length: " + studentIdList.length + ", studentsGrades.length: " + studentsGrades.length);
         }
@@ -23,7 +23,7 @@ public class studentutil {
                 } else if (studentsGrades[i][j] == 'C') {
                     gpa += 2.0;
                 } else if (studentsGrades[i][j] == ' ') {
-                    throw new missinggradeexception(studentIdList[i]);
+                    throw new MissingGradeException(studentIdList[i]);
                 }
             }
 
@@ -42,9 +42,9 @@ public class studentutil {
 
         try {
             gpaList = calculateGPA(studentIdList, studentsGrades);
-        } catch (missinggradeexception e) {
+        } catch (MissingGradeException e) {
             logger.error("Exception in calculateGPA", e);
-            throw new invaliddataexception(e);
+            throw new InvalidDataException(e);
         }
 
         int count = 0;
@@ -74,7 +74,7 @@ public class studentutil {
 
         try {
             gpaList = calculateGPA(studentIdList, studentsGrades);
-        } catch (missinggradeexception e) {
+        } catch (MissingGradeException e) {
             logger.error("Exception in calculateGPA", e);
 
         }

@@ -8,7 +8,7 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        ticketreservation reservationSystem = new ticketreservation();
+        TicketReservation reservationSystem = new TicketReservation();
 
         boolean bookingResult = reservationSystem.bookFlight("Tony", "Soprano", 30, "Male", "Economy", "1");
 

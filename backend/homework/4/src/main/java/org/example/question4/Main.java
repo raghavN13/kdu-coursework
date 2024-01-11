@@ -2,13 +2,13 @@ package org.example.question4;
 
 public class Main {
     public static void main(String[] args) {
-        setdemo.treeSetDemo(null);
+        SetDemo.treeSetDemo(null);
 
         // Using PubDateAscComparator
 
-        setdemo.treeSetDemo(new pubdateasccomparator());
+        SetDemo.treeSetDemo(new PubDateAscComparator());
 
         // Using PubDateDescComparator
-        setdemo.treeSetDemo(new pubdatedesccomparator());
+        SetDemo.treeSetDemo(new PubDateDescComparator());
     }
 }

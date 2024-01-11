@@ -6,13 +6,13 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 
-public class ticketreservation {
+public class TicketReservation {
 
     private static final int CONFIRMEDLIST_LIMIT = 10;
     private static final int WAITINGLIST_LIMIT = 3;
 
-    private List<passenger> confirmedList = new ArrayList<>();
-    private Deque<passenger> waitingList = new ArrayDeque<>();
+    private List<Passenger> confirmedList = new ArrayList<>();
+    private Deque<Passenger> waitingList = new ArrayDeque<>();
 
 
     public boolean bookFlight(String firstName, String lastName, int age, String gender, String travelClass,
@@ -21,7 +21,7 @@ public class ticketreservation {
             return false;
         }
 
-        passenger passenger = new passenger(firstName, lastName, age, gender, travelClass, confirmationNumber);
+        Passenger passenger = new Passenger(firstName, lastName, age, gender, travelClass, confirmationNumber);
 
         if (confirmedList.size() < CONFIRMEDLIST_LIMIT) {
             return confirmedList.add(passenger);
@@ -35,7 +35,7 @@ public class ticketreservation {
 
         if (flag) {
             // Move first-waiting passenger into passengerList
-            passenger waitingPassenger = waitingList.poll();
+            Passenger waitingPassenger = waitingList.poll();
             if (waitingPassenger != null) {
                 confirmedList.add(waitingPassenger);
             }
@@ -47,9 +47,9 @@ public class ticketreservation {
         return flag;
     }
 
-    public boolean removePassenger(Iterator<passenger> iterator, String confirmationNumber) {
+    public boolean removePassenger(Iterator<Passenger> iterator, String confirmationNumber) {
         while (iterator.hasNext()) {
-            passenger passenger = iterator.next();
+            Passenger passenger = iterator.next();
             if (passenger.getConfirmationNumber().equals(confirmationNumber)) {
                 iterator.remove();
                 return true;

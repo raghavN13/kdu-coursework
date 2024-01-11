@@ -1,9 +1,9 @@
 package org.example.question1;
 
-public class missinggradeexception extends Exception {
+public class MissingGradeException extends Exception {
     int studentId = 0;
 
-    public missinggradeexception(int studentId) {
+    public MissingGradeException(int studentId) {
         this.studentId = studentId;
     }
 

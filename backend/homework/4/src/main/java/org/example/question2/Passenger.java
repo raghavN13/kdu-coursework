@@ -1,21 +1,11 @@
 package org.example.question2;
 
-public class passenger {
-    private String firstName;
-    private String lastName;
-    private int age;
-    private String gender;
-    private String travelClass;
+public class Passenger {
     private String confirmationNumber;
 
-    public passenger(String firstName, String lastName, int age, String gender, String travelClass,
+    public Passenger(String firstName, String lastName, int age, String gender, String travelClass,
                      String confirmationNumber) {
         super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
-        this.travelClass = travelClass;
         this.confirmationNumber = confirmationNumber;
     }
 
@@ -39,7 +29,7 @@ public class passenger {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        passenger other = (passenger) obj;
+        Passenger other = (Passenger) obj;
         if (confirmationNumber == null) {
             if (other.confirmationNumber != null)
                 return false;
