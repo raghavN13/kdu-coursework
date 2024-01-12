@@ -1,5 +1,5 @@
-package org.example.QuestionThree;
-import org.example.logger;
+package org.example.questionthree;
+import org.example.Logging;
 
 
 
@@ -20,7 +20,7 @@ public class Factorial implements  Runnable{
                 fact = fact * i;
 
             }
-            logger.logInfo("Factorial : ".concat(Long.toString(fact)));
+            Logging.logInfo("Factorial : ".concat(Long.toString(fact)));
         }
     }
 

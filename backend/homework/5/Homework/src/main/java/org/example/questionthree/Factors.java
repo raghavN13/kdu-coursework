@@ -1,6 +1,6 @@
-package org.example.QuestionThree;
+package org.example.questionthree;
 
-import org.example.logger;
+import org.example.Logging;
 
 public class Factors implements Runnable {
     private final Main shared;
@@ -14,11 +14,11 @@ public class Factors implements Runnable {
         synchronized (shared) {
             int value = shared.number;
 
-            logger.logInfo("Factors of " + value + " are: ");
+            Logging.logInfo("Factors of " + value + " are: ");
 
             for (int i = 1; i <= value; ++i) {
                 if (value % i == 0) {
-                    logger.logInfo(i + " ");
+                    Logging.logInfo(i + " ");
                 }
             }
         }

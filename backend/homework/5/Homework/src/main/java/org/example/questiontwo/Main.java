@@ -1,8 +1,8 @@
-package org.example.QuestionTwo;
+package org.example.questiontwo;
 
-import org.example.QuestionOne.MessageQueue;
-import org.example.QuestionOne.MessageReceiver;
-import org.example.QuestionOne.MessageSender;
+import org.example.questionone.MessageQueue;
+import org.example.questionone.MessageReceiver;
+import org.example.questionone.MessageSender;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

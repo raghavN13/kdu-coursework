@@ -1,6 +1,6 @@
-package org.example.QuestionOne;
+package org.example.questionone;
 
-import org.example.logger;
+import org.example.Logging;
 
 public class MessageReceiver implements Runnable {
     private final MessageQueue msg;
@@ -11,7 +11,7 @@ public class MessageReceiver implements Runnable {
 
     private synchronized void messageReceive() {
         String message = msg.dq.poll();
-        logger.logInfo("Thread " + Thread.currentThread().getId() + " received: " + message);
+        Logging.logInfo("Thread " + Thread.currentThread().getId() + " received: " + message);
     }
 
     @Override

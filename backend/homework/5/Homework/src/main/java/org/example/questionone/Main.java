@@ -1,4 +1,4 @@
-package org.example.QuestionOne;
+package org.example.questionone;
 
 public class Main {
 

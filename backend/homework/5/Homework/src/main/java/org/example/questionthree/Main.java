@@ -1,6 +1,6 @@
-package org.example.QuestionThree;
+package org.example.questionthree;
 
-import org.example.logger;
+import org.example.Logging;
 
 public class Main {
     int number = 8;
@@ -17,9 +17,9 @@ public class Main {
             threadOne.join();
             threadTwo.join();
         } catch (InterruptedException e) {
-            logger.logInfo("Exception Caught");
+            throw new RuntimeException("Main thread interrupted", e);
         }
 
-        logger.logInfo("Main thread exiting.");
+        Logging.logInfo("Main thread exiting.");
     }
 }

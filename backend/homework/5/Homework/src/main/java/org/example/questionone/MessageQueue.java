@@ -1,4 +1,4 @@
-package org.example.QuestionOne;
+package org.example.questionone;
 import java.util.ArrayDeque;
 import java.util.Deque;
 

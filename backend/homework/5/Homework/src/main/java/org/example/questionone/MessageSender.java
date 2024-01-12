@@ -1,4 +1,4 @@
-package org.example.QuestionOne;
+package org.example.questionone;
 
 public class MessageSender implements Runnable {
     private final MessageQueue msg;
