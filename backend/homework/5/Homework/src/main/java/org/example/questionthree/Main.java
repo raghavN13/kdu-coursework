@@ -12,13 +12,10 @@ public class Main {
         threadOne.start();
         threadTwo.start();
 
-        try {
-            // Wait for both threads to finish
-            threadOne.join();
-            threadTwo.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException("Main thread interrupted", e);
-        }
+        threadOne.join();
+        threadTwo.join();
+
+
 
         Logging.logInfo("Main thread exiting.");
     }
