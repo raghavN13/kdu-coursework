@@ -59,21 +59,23 @@ public class Main {
 
                 String Teams = "";
                 int matchno = 1;
+            for(int j=0 ;j< arr.size();j++){
+                for(int k=j+1 ;k<arr.size() ;k+=2){
+                    Teams = arr.get(j)+arr.get(j);
+                    String MatchCount = String.valueOf(matchno);
+                    String Timing = "3:30";
+                    String Date = String.valueOf(matchno) + "April";
+                    matchno++;
 
-                for(int j=0 ;j< arr.size();j++){
-                    for(int k=j+1 ;k<arr.size() ;k+=2){
-                        Teams = arr.get(j)+arr.get(j);
-                        String MatchCount = String.valueOf(matchno);
-                        String Timing = "3:30";
-                        String Date = String.valueOf(matchno) + "April";
-                        matchno++;
+                    String[] data1 = {MatchCount,Teams,Timing,Date};
+                    writer.writeNext(data1);
 
 
 
 
-                    }
                 }
-         }
+            }
+
 
             // closing writer connection
             writer.close();
