@@ -57,13 +57,6 @@ public class Main {
             String[] header = { "Match no", "Teams ", "Timing" , "Date" };
             writer.writeNext(header);
 
-            // add data to csv
-//            String[] data1 = { "Aman", "10", "620" };
-//            writer.writeNext(data1);
-//            String[] data2 = { "Suraj", "10", "630" };
-//            writer.writeNext(data2);
-
-//            for(int i=1 ;i<=30 ;i++){
                 String Teams = "";
                 int matchno = 1;
 
@@ -80,8 +73,7 @@ public class Main {
 
                     }
                 }
-
-//            }
+         }
 
             // closing writer connection
             writer.close();
