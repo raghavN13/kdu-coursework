@@ -9,9 +9,10 @@ import java.util.Random;
 /**
  * Gives the Information about the tyres such as its Brand and Price
  */
-
 @Component
 class TyreService {
+
+    private final Random random = new Random();
 
     @Bean
     public Tyre generateTyre() {
@@ -22,10 +23,10 @@ class TyreService {
 
     private String getRandomBrand() {
         String[] brands = {"MRF", "Bridgestone"};
-        return brands[new Random().nextInt(brands.length)];
+        return brands[random.nextInt(brands.length)];
     }
 
     private double generateRandomPrice() {
-        return new Random().nextDouble() * 100 + 100; // Random price between 100 and 200
+        return random.nextDouble() * 100 + 100; // Random price between 100 and 200
     }
 }

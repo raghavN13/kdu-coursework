@@ -34,7 +34,7 @@ public class VehicleService {
         vehicles = generateVehicles(5);
 
         // Print details of the most expensive vehicle on startup
-        Vehicle mostExpensiveVehicle = findMostExpensiveVehicle();
+
     }
 
     public List<Vehicle> generateVehicles(int count) {
