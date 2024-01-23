@@ -21,7 +21,7 @@ public class VehicleServiceFactoryOne extends VehicleService {
     @Autowired
     public VehicleServiceFactoryOne(TyreService tyreService, SpeakerService speakerService, InventoryStore inventoryStore) {
         super(tyreService, speakerService, inventoryStore);
-        // Adjust pricing structure specific to Factory 1
+
     }
 
     @Override
@@ -31,7 +31,9 @@ public class VehicleServiceFactoryOne extends VehicleService {
             Tyre tyre = TyreService.generateTyre();
             Speaker speaker = SpeakerService.generateSpeaker();
 
-            // Apply pricing adjustments specific to Factory 1
+            /**
+             * Applying the price adjustments
+             */
             adjustPricingForFactory1(tyre);
 
             Vehicle vehicle = new Vehicle(tyre, speaker);
@@ -40,9 +42,11 @@ public class VehicleServiceFactoryOne extends VehicleService {
         return vehicles;
     }
 
+    /**
+     * adjusting the price set by the factory one
+     * @param tyre
+     */
     private void adjustPricingForFactory1(Tyre tyre) {
-        // Implement pricing adjustments specific to Factory 1
-        // For example, you can increase the price of the tyre by 10%
         double newTyrePrice = tyre.getPrice() * 1.1;
         tyre.setPrice(newTyrePrice);
     }

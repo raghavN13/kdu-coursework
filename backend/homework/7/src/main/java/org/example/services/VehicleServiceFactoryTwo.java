@@ -31,7 +31,9 @@ public class VehicleServiceFactoryTwo extends VehicleService {
             Tyre tyre = TyreService.generateTyre();
             Speaker speaker = SpeakerService.generateSpeaker();
 
-            // Apply pricing adjustments specific to Factory 2
+            /**
+             * Applying the Price adjustments
+             */
             adjustPricingForFactory2(speaker);
 
             Vehicle vehicle = new Vehicle(tyre, speaker);
@@ -40,9 +42,12 @@ public class VehicleServiceFactoryTwo extends VehicleService {
         return vehicles;
     }
 
+    /**
+     * Implementing the Price Adjustments
+     * @param speaker
+     */
     private void adjustPricingForFactory2( Speaker speaker) {
-        // Implement pricing adjustments specific to Factory 2
-        // For example, you can decrease the price of the speaker by 5%
+
         double newSpeakerPrice = speaker.getPrice() * 0.95;
         speaker.setPrice(newSpeakerPrice);
     }
