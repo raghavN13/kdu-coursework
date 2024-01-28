@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Gives the Reverse Geocoding mapping
+ */
+
 @RestController
 @RequestMapping("/reverse-geocoding")
 public class ReverseGeocodingController {

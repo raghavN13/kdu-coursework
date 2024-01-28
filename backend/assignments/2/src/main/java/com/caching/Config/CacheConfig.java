@@ -20,6 +20,12 @@ public class CacheConfig {
                 .recordStats();  // Enable statistics for LFU
 
     }
+
+    /**
+     * Creates the cachemanager which is used for caching in the application
+     * @param caffeine
+     * @return instance of the cache manager
+     */
     @Bean
     public CacheManager cacheManager(Caffeine caffeine) {
         CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();

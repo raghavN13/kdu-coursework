@@ -1,5 +1,8 @@
 package com.caching.constants;
 
+/**
+ * Gives the list of the constants that are used in the application
+ */
 public class OtherConstants {
     private OtherConstants() {
 

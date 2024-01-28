@@ -12,6 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import static com.caching.constants.OtherConstants.INVALID_REQUEST_CONSTANT;
 import static com.caching.constants.OtherConstants.REVERSE_GEOCODE_URL;
 
+/**
+ * This class defines the Reverse Geocoding Process
+ */
 @Service
 public class ReverseGeocoding {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReverseGeocoding.class);
@@ -20,12 +23,23 @@ public class ReverseGeocoding {
         this.apiConfig = apiConfig;
     }
 
+    /**
+     * Buils the URL used for fetching the data from the third party API
+     * @param Latitude and Longitude
+     * @return String that is the URL
+     */
     private String buildReverseGeocodingApiUrl(Double latitude, Double longitude) {
         String apiKey = apiConfig.getApiKey();
         String reverseApiUrl = REVERSE_GEOCODE_URL;
         return String.format("%s?lat=%s&lon=%s&apiKey=%s",
                 reverseApiUrl, latitude, longitude, apiKey);
     }
+    /**
+     * Returns a RestTemplate object that is used by the controller to communicate with the third party API
+     * checks for the validity of the params and throws the necessary exceptions upon checking the validity
+     * @param address
+     * @return Instance of the class RestTemplate
+     */
     @Cacheable(value = "reverse-geocoding", key = "{#latitude, #longitude}")
     public ReverseGeocodingResponse reverseGeocode(double latitude , double longitude) {
         ReverseGeocodingRequestValidator validator = new ReverseGeocodingRequestValidator();

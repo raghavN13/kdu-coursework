@@ -6,11 +6,18 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Gives the format of the Geocoding Response
+ */
 @Data
 public class GeocodingResponse {
     private Double latitude;
     private Double longitude;
 
+    /**
+     * maps the longitude and the latitude from the response given by the thirdparty API
+     * @param features array that is provided as the response from the thirdparty API
+     */
     @JsonProperty("features")
     private void unpackCoordinates(List<Feature> features) {
         if (features != null && !features.isEmpty()) {

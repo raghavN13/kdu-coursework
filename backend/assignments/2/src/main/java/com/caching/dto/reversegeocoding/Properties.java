@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+/**
+ * It is used for Mapping purpose
+ */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Properties {
