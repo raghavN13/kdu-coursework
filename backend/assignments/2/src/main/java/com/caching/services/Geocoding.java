@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import static com.caching.constants.OtherConstants.GeoCodeUrl;
-import static com.caching.constants.OtherConstants.InvalidRequestConstant;
+import static com.caching.constants.OtherConstants.GEO_CODE_URL;
+import static com.caching.constants.OtherConstants.INVALID_REQUEST_CONSTANT;
 
 @Service
 public class Geocoding {
@@ -24,14 +24,14 @@ public class Geocoding {
 
     private String buildGeocodingApiUrl(String address) {
         String apiKey = apiConfig.getApiKey();
-        String geoCodingApiUrl = GeoCodeUrl;
+        String geoCodingApiUrl = GEO_CODE_URL;
         return String.format("%s?text=%s&apiKey=%s", geoCodingApiUrl, address, apiKey);
     }
     @Cacheable(value = "geocoding", key = "#address", unless = "#result == null or #address.toLowerCase().contains('goa')")
     public GeocodingResponse geocodeAddress(String address) {
         GeocodingRequestValidator validator =  new GeocodingRequestValidator();
         if(!validator.checkForValidation(address)){
-            throw new InvalidRequest(InvalidRequestConstant);
+            throw new InvalidRequest(INVALID_REQUEST_CONSTANT);
         }
         LOGGER.info("Geocoding The Address");
         String apiUrl = buildGeocodingApiUrl(address);

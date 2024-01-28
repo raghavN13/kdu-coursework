@@ -9,8 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import static com.caching.constants.OtherConstants.InvalidRequestConstant;
-import static com.caching.constants.OtherConstants.ReverseGeocodeUrl;
+import static com.caching.constants.OtherConstants.INVALID_REQUEST_CONSTANT;
+import static com.caching.constants.OtherConstants.REVERSE_GEOCODE_URL;
 
 @Service
 public class ReverseGeocoding {
@@ -22,7 +22,7 @@ public class ReverseGeocoding {
 
     private String buildReverseGeocodingApiUrl(Double latitude, Double longitude) {
         String apiKey = apiConfig.getApiKey();
-        String reverseApiUrl = ReverseGeocodeUrl;
+        String reverseApiUrl = REVERSE_GEOCODE_URL;
         return String.format("%s?lat=%s&lon=%s&apiKey=%s",
                 reverseApiUrl, latitude, longitude, apiKey);
     }
@@ -30,7 +30,7 @@ public class ReverseGeocoding {
     public ReverseGeocodingResponse reverseGeocode(double latitude , double longitude) {
         ReverseGeocodingRequestValidator validator = new ReverseGeocodingRequestValidator();
         if(!validator.check(latitude, longitude)){
-            throw new InvalidRequest(InvalidRequestConstant);
+            throw new InvalidRequest(INVALID_REQUEST_CONSTANT);
         }
         LOGGER.info("Reverse Geocoding The Latitude and Longitude");
         String apiUrl = buildReverseGeocodingApiUrl(latitude, longitude);
