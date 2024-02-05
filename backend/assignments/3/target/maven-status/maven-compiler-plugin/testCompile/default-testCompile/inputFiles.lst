@@ -1,0 +1,17 @@
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/UserRegisterRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/utility/TestSuiteDataManager.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/controller/RoomControllerTest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/InventoryRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/AddDeviceRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/UpdateAddressRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/utility/RequestBuilders.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/HouseRegisterRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/AddRoomRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/AddUserToHouseRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/configuration/TestDatabaseConfig.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/controller/AuthControllerTest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/controller/DeviceControllerTest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/controller/HouseControllerTest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/controller/InventoryControllerTest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/DTO/DeviceRegisterRequest.java
+/home/lenovo/miniproject/kdu-coursework/backend/assignments/3/src/test/java/com/kdu/smarthome/SmartHomeApplicationTests.java
