@@ -1,0 +1,11 @@
+{
+  "HostName": "lenovo-ThinkPad-E14",
+  "OperatingSystem": "Linux",
+  "Architecture": "x64",
+  "OSRelease": "6.5.0-15-generic",
+  "Uptime": 46792.05,
+  "NumberOfCPUCores": 8,
+  "TotalMemory": 16558239744,
+  "FreeMemory": 2103140352,
+  "CurrentWorkingDirectory": "/home/lenovo/nodeJs"
+}
