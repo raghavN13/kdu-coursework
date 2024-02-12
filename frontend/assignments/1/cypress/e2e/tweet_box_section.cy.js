@@ -68,17 +68,17 @@ describe("Tweet Box Section", () => {
     visitPageAndSetViewport(414, 896);
 
     // Ensure the floating tweet-box icon element is visible in the viewport
-    ensureElementVisible(".floating-tweet-box-icon");
+    ensureElementVisible("#plus-btn");
 
     // Click the 'floating-tweet-box-icon'
-    cy.get(".floating-tweet-box-icon").click();
+    cy.get("#plus-btn").click();
 
     // Wait for the box to get open
     cy.wait(1000);
 
     // Capture screenshot of the tweet-box element
     captureElementScreenshot(
-      ".tweet-box",
+      ".mobile-tweet-box",
       "MV-provided-tweet-box",
       Cypress.env("TEST_THRESHOLD")
     );

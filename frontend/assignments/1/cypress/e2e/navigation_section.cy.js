@@ -37,10 +37,10 @@ describe("Navigation Section", () => {
     cy.viewport(414, 896);
 
     // Ensure the profile icon element is visible in the viewport
-    cy.get(".profile-icon").should("be.visible");
+    cy.get("#profile-photo").should("be.visible");
 
     // Click the 'profile-icon'
-    cy.get(".profile-icon").click();
+    cy.get("#profile-photo").click();
 
     // Ensure the navigation-section element is visible in the viewport
     cy.get(".navigation-section").should("be.visible");

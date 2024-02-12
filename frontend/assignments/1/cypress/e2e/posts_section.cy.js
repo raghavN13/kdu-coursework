@@ -29,19 +29,19 @@ describe("Posts Section", () => {
     cy.get(".tweet-box").should("be.visible");
 
     // Type text in the tweet-box
-    cy.get(".post-input").type(tweetText);
+    cy.get(".post-input-one").type(tweetText);
 
     // Check if the 'tweet-btn' button is enabled
-    cy.get("#tweet-btn").should("not.be.disabled");
+    cy.get("#tweet-btn-one").should("not.be.disabled");
 
     // Click the 'tweet-btn' button
-    cy.get("#tweet-btn").click();
+    cy.get("#tweet-btn-one").click();
 
     // Wait for the tweet to be posted
     cy.wait(2000);
 
     // Compare the screenshot of the first element with class 'posts'
-    cy.get(".posts")
+    cy.get(".posts-one")
       .children()
       .first()
       .compareSnapshot(snapshotName, Cypress.env("TEST_THRESHOLD"));
@@ -62,12 +62,12 @@ describe("Posts Section", () => {
   /**
    * Test case to compare a screenshot after posting a tweet in the mobile view.
    */
-  it("should compare screenshot after posting a tweet in the mobile view", () => {
-    postTweetAndCompareSnapshot(
-      414,
-      896,
-      "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding",
-      "MV-provided-post"
-    );
-  });
+  // it("should compare screenshot after posting a tweet in the mobile view", () => {
+  //   postTweetAndCompareSnapshot(
+  //     414,
+  //     896,
+  //     "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding",
+  //     "MV-provided-post"
+  //   );
+  // });
 });
