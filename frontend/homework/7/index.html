@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+
+
+    <div class="big-container">
+        <div class="header">
+            <h1>KDU CHAT APP</h1>
+        </div>
+        <div class="message-container">
+            <div id="message-list"></div>
+        </div>
+
+        <div class="sending-block">
+            <input type="text" name="" id="message" placeholder="Enter the message">
+            <button id="submit-btn"><span class="material-symbols-outlined">
+                    send
+                </span></button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+    <script>
+        const socket = io("http://localhost:3000");
+    </script>
+    <script>
+
+        socket.on('message', function (msg) {
+            var singleMessage = document.createElement('div');
+            var paragraph = document.createElement('p');
+            var image = document.createElement('img');
+            paragraph.innerText = msg;
+            image.src = 'image.png';
+            image.alt = 'User icon';
+            singleMessage.appendChild(image);
+            singleMessage.appendChild(paragraph);
+            singleMessage.classList.add('receiver');
+            const messageList = document.getElementById('message-list');
+            messageList.appendChild(singleMessage);
+        });
+
+        document.getElementById('submit-btn').addEventListener('click', function (event) {
+            event.preventDefault()
+
+            const message = document.getElementById('message').value.trim();
+            if (message) {
+                var item = document.createElement('p');
+                var image = document.createElement('img');
+                var singleSenderMessage = document.createElement('div');
+                item.innerText = message;
+                image.src = 'image.png';
+                image.alt = 'User icon';
+                singleSenderMessage.classList.add('sender');
+                singleSenderMessage.appendChild(image);
+                singleSenderMessage.appendChild(item);
+
+                const messageList = document.getElementById('message-list');
+                messageList.appendChild(singleSenderMessage);
+                console.log(message);
+                if (message) {
+                    socket.emit('message', message);
+                    document.getElementById('message').value = '';
+                }
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>
