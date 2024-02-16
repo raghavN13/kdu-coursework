@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js" ></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="heading">
+        <h1>KDU Stock Dashboard</h1>
+    </div>
+<div class="big-container">
+    <div id="first-container">
+        <div id="options">
+            <div id="name">Zomato</div>
+            <div id="price">Price</div>
+            <div id="input-quantity">
+                <input type="text" id="input-stock" placeholder="Enter Quantity">
+            </div>
+            <div id="buy">Buy</div>
+            <div id="sell">Sell</div>
+
+        </div>
+        <div id="bar-chart">
+        </div>
+    </div>
+    <div id="second-container">
+        <h1>History</h1>
+    </div>
+</div>
+    
+</body>
+</html>
