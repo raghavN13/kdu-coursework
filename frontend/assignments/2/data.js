@@ -14,6 +14,13 @@ const userDB = [
     password: bcrypt.hashSync("dewang@123", 10), 
     user_email_id: "dewang@gmail.com",
     profile_url: "www.dewang.com",
+  },
+  {
+    id: "3",
+    user_name: "sputnik_7",
+    password: bcrypt.hashSync("nikhil@123", 10), 
+    user_email_id: "dewang@gmail.com",
+    profile_url: "www.dewang.com",
   }
 ];
 

@@ -211,7 +211,7 @@
   #threedoticon {
     height: 18.75px;
     width: 18.75px;
-    margin-left: 315px;
+    margin-left: 250px;
     fill: #657786;
   }
   #post-name-one {
@@ -295,6 +295,7 @@
     display: flex;
     flex-direction: column;
     border-left: 1px solid #16181c;
+    border-right: 1px solid #16181c;
     width: 60%;
     height: 720px;
   }
@@ -338,8 +339,11 @@
   #send-button:hover {
     background-color: #128c7e;
   }
+  #back-button-in-header {
+    display: none;
+  }
   .sent-message {
-    background-color: blue;
+    background-color: #1d9bf0;
     color: white;
     padding: 5px 10px;
     margin-bottom: 5px;
@@ -348,7 +352,7 @@
     max-width: 50%;
   }
   .received-message {
-    background-color: grey;
+    background-color: rgb(128, 128, 128);
     color: white;
     padding: 5px 10px;
     margin-bottom: 5px;
@@ -386,6 +390,7 @@
     margin-top: 15px;
     height: 50px;
     padding-top: 10px;
+    border: 1px solid #16181c;
   }
   .user-msg-desktop-item:hover {
     background-color: rgba(240, 240, 240, 0.6156862745); /* or any other slight grey color */

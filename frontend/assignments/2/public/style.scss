@@ -233,7 +233,7 @@ svg{
 #threedoticon{
     height: 18.75px;
     width: 18.75px;
-    margin-left:315px;
+    margin-left:250px;
     fill:#657786
 }
 #post-name-one{
@@ -381,9 +381,11 @@ svg{
 #send-button:hover {
     background-color: #128c7e;
 }
-
+#back-button-in-header{
+    display: none;
+}
 .sent-message {
-    background-color: blue;
+    background-color: #1d9bf0;
     color: white;
     padding: 5px 10px;
     margin-bottom: 5px;
@@ -393,7 +395,7 @@ svg{
 }
 
 .received-message {
-    background-color: grey;
+    background-color: rgb(128, 128, 128);
     color: white;
     padding: 5px 10px;
     margin-bottom: 5px;

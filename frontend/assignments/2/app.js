@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
 
 
-app.post('/users/posts', (req, res) => {
+app.post('/users/feed', (req, res) => {
     console.log("the body is ", req.body);
     console.log("entering in the server side post");
     console.log(req.body.username);
@@ -55,7 +55,7 @@ app.post('/users/posts', (req, res) => {
 });
 
 
-app.get('/users/posts', (req, res) => {
+app.get('/users/feed', (req, res) => {
     const username = req.query.username;
     const page = parseInt(req.query.page) || 1;
     const pageSize = parseInt(req.query.pageSize) || 5;
@@ -83,7 +83,7 @@ function generateTweetId() {
 app.get('/users/login',(req,res) => {
     res.sendFile(path.join(__dirname,'./public/login.html'));
 });
-app.get('/users/feed', (req, res) => {
+app.get('/users/posts', (req, res) => {
     res.sendFile(path.join(__dirname, './public/view.html'));
 });
 
@@ -101,7 +101,7 @@ app.post('/users/login', async(req,res)=>{
 
             const passwordMatch = await bcrypt.compare(submittedPassword,storedPassword);
             if(passwordMatch){
-                res.redirect(`/users/feed?username=${foundUser.user_name}`);
+                res.redirect(`/users/posts?username=${foundUser.user_name}`);
             }
             else{
                 res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>");
