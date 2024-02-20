@@ -15,6 +15,11 @@ const tweetBoxId = document.getElementById('tweet-box-id');
 const desktopFeed = document.querySelector('.feed');
 const MessageBarProfilePicture = document.getElementById('message-bar-profile-picture');
 const desktopMessageBiggerContainer = document.getElementById("desktop-message-bigger-container");
+const imageInput = document.getElementById('imageInput');
+const imageInputMobile = document.getElementById('imageInput-mobile');
+
+console.log(imageInputMobile);
+
 desktopMessages.addEventListener('click',()=>{
     desktopFeed.style.display = 'none';
     desktopMessageBiggerContainer.style.display = "block";
@@ -23,14 +28,11 @@ desktopMessages.addEventListener('click',()=>{
 
 const urlParams = new URLSearchParams(window.location.search);
 const username = urlParams.get('username');
-console.log(username);
-
 let personName;
 let personUrl;
 let personUsername;
 
 const desktopImage = document.getElementById('image-for-desktop');
-console.log(desktopImage.src);
 const desktopName = document.getElementById('name-for-desktop');
 const desktopUsername = document.getElementById('attherate');
 const mobileImage = document.getElementById('profile-photo');
@@ -66,39 +68,42 @@ mobileUsername.innerText = `${personUsername}`;
 tweetBoxId.src = `${personUrl}`;
 MessageBarProfilePicture.src = `${personUrl}`;
 
-document.getElementById("plus-btn").addEventListener('click',()=>{
-    
-    app.style.display = 'block';
-    mainMobileContainer.style.display = 'none';
-    chat.style.display = 'none';
-    mobileNaviSection.style.display = 'none';
-    mobileMainIcons.style.display = 'none';
-    mobileFeedIcons.style.display = 'none';
-    mobilePosts.style.display = 'none';
-    mobileAddPosts.style.display = 'block';
-    plusBtn.style.display = 'none';
-    
-
-    document.querySelector(".reverse").addEventListener('click',()=>{
-        app.style.display = 'block';
-        mainMobileContainer.style.display = 'none';
-        chat.style.display = 'none';
-        mobileNaviSection.style.display = 'none';
-        mobileMainIcons.style.display = 'flex';
-        mobileFeedIcons.style.display = 'flex';
-        mobilePosts.style.display = 'block';
-        mobileAddPosts.style.display = 'none';
-        plusBtn.style.display = 'block';
-        
-    })
-    
-})
-function appendInMobile(tweetContent){
-    let postContent = document.getElementById('post-input').value;
-    console.log(postContent);
+/**
+ * this is for appending the newly posted tweet in mobile
+ * @param {*} tweetContent 
+ * @param {*} imageContent 
+ */
+function appendInMobile(tweetContent , imageContent){
     let newPost = document.createElement('div');
     newPost.classList.add('general-posts');
-    newPost.innerHTML = `
+
+    if(imageContent==null){
+        newPost.innerHTML = `
+            <div class="post-picture">
+                <img src="${personUrl}" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <div class="profile-holder">
+                    <p id="post-name">${personName}</p>
+                    <p class="username" id="postusername">${username}</p>
+                </div>
+                <div class="post-text"><p>${tweetContent}</p></div>
+                <img class="tweet-image" src=${imageContent}>
+                <div class="post-icons">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.30-.504-.30c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g></svg>
+                <div class="bookmark-upload">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g></svg>
+                </div>
+            </div>
+            </div>
+        `;
+    }
+    else{
+        newPost.innerHTML = `
         <div class="post-picture">
             <img src="${personUrl}" alt="Profile Picture">
         </div>
@@ -120,16 +125,46 @@ function appendInMobile(tweetContent){
         </div>
         </div>
     `;
+    }
     document.querySelector('.posts').prepend(newPost);
     document.getElementById('post-input').value = '';
 }
-function appendInDesktop(tweetContent){
-    console.log("entering in the append in the desktop the tweet content is ", tweetContent);
+/**
+ * this is for appending the newly posted tweet in the desktop
+ * @param {*} tweetContent 
+ * @param {*} imageContent 
+ */
+function appendInDesktop(tweetContent , imageContent){
     let postContent = document.getElementById('post-input-one').value;
-    console.log(postContent);
     let newPost = document.createElement('div');
     newPost.classList.add('general-posts-one');
-    newPost.innerHTML = `
+    if (imageContent==null){
+        newPost.innerHTML = `
+            <div class="post-picture-one">
+                <img src="${personUrl}" alt="Profile Picture">
+            </div>
+            <div class="profile-info-one">
+                <div class="profile-holder-one">
+                    <p id="post-name-one">${personName}</p>
+                    <p class="username-one" id="postusername-one">${username} 1s</p>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi" id="threedoticon"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                </div>
+                <div class="post-text-one"><p>${tweetContent}</p></div>
+                <div class="post-icons">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.30-.504-.30c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g></svg>
+                <div class="bookmark-upload">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z"></path></g></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g></svg>
+                </div>
+            </div>
+            </div>
+        `;    
+    }
+    else{
+        newPost.innerHTML = `
         <div class="post-picture-one">
             <img src="${personUrl}" alt="Profile Picture">
         </div>
@@ -140,6 +175,7 @@ function appendInDesktop(tweetContent){
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi" id="threedoticon"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
             </div>
             <div class="post-text-one"><p>${tweetContent}</p></div>
+            <img src=${imageContent} class="tweet-image" id="tweet-image-desktop-two">
             <div class="post-icons">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
             <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
@@ -152,14 +188,22 @@ function appendInDesktop(tweetContent){
         </div>
         </div>
     `;
+    }
     document.querySelector('.posts-one').prepend(newPost);
     document.getElementById('post-input-one').value = '';
 }
-
-async function postTweet(username, tweetContent) {
+/**
+ * this function interacts with the server and posts the tweet inside the server 
+ * it gives the response as the username tweetcontent and the image url for the user so that that is used for appending in the posts section
+ * @param {*} username 
+ * @param {*} tweetContent 
+ * @param {*} imageUrl 
+ */
+async function postTweet(username, tweetContent, imageUrl = null) {
     const requestBody = {
         username: username,
-        tweetContent: tweetContent
+        tweetContent: tweetContent,
+        imageUrl: imageUrl // Include imageUrl in the request body
     };
     
     try {
@@ -174,8 +218,8 @@ async function postTweet(username, tweetContent) {
         if (response.ok) {
             const data = await response.json();
             const latestTweet = data.tweet; // Assuming the server sends back the latest tweet
-            appendInDesktop(latestTweet.content);
-            appendInMobile(latestTweet.content);
+            appendInDesktop(latestTweet.content, latestTweet.imageUrl); // Pass imageUrl to the appendInDesktop function
+            appendInMobile(latestTweet.content, latestTweet.imageUrl); // Pass imageUrl to the appendInMobile function
         } else {
             throw new Error('Failed to post tweet');
         }
@@ -200,23 +244,70 @@ async function fetchTweets(username, page) {
         console.error('Error fetching tweets:', error);
     }
 }
+/**
+ * This function is for appending all the tweets from the server when the page is reloaded
+ * @param {*} tweets 
+ */
 
 function appendTweetsMobile(tweets){
     console.log("Calling the Api again");
     tweets.forEach(tweet => {
         const newtweetContentMobile = tweet.content;
+        const newUsername = tweet.username;
+        const tweetImage = tweet.imageUrl;
+        if(newUsername === 'raghav.39'){
+            personName = "Raghav Nandwana";
+            personUrl = "http://localhost:3000/JW.jpg";
+        
+        }
+        else if(newUsername === 'dewang_06'){
+            personName = "Dewang Khandelwal";
+            personUrl = "http://localhost:3000/maximus.jpeg";  
+        }
+        else if(newUsername === 'sputnik_7'){
+            personName = "Nikhil Bhalerao";
+            personUrl = "http://localhost:3000/michael.jpg";  
+        }
+
         let newPost = document.createElement('div');
         newPost.classList.add('general-posts');
-        newPost.innerHTML = `
+        if(tweetImage==null){
+            newPost.innerHTML = `
+                <div class="post-picture">
+                    <img src="${personUrl}" alt="Profile Picture">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-holder">
+                        <p id="post-name">${personName}</p>
+                        <p class="username" id="postusername">${newUsername}</p>
+                    </div>
+                    <div class="post-text"><p>${newtweetContentMobile}</p></div>
+                    <div class="post-icons">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.30-.504-.30c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g></svg>
+                    <div class="bookmark-upload">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g></svg>
+                    </div>
+                </div>
+                </div>
+            `;
+
+        }
+        else{
+            newPost.innerHTML = `
             <div class="post-picture">
                 <img src="${personUrl}" alt="Profile Picture">
             </div>
             <div class="profile-info">
                 <div class="profile-holder">
                     <p id="post-name">${personName}</p>
-                    <p class="username" id="postusername">${username}</p>
+                    <p class="username" id="postusername">${newUsername}</p>
                 </div>
                 <div class="post-text"><p>${newtweetContentMobile}</p></div>
+                <img class="tweet-image" src=${tweetImage}>
                 <div class="post-icons">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
@@ -229,30 +320,78 @@ function appendTweetsMobile(tweets){
             </div>
             </div>
         `;
+        }
         document.querySelector('.posts').prepend(newPost);
         document.getElementById('post-input').value = '';
     });
 
 }
+/**
+ * this function is for appending all the tweets on the page in the desktop layout when the page is reloaded
+ * @param {*} tweets 
+ */
 
 function appendTweets(tweets) {
 
     tweets.forEach(tweet => {
         console.log("calling the API Again");
         const newtweetContent = tweet.content;
+        const newUsername = tweet.username;
+        const tweetImage = tweet.imageUrl;
+        if(newUsername === 'raghav.39'){
+            personName = "Raghav Nandwana";
+            personUrl = "http://localhost:3000/JW.jpg";
+        
+        }
+        else if(newUsername === 'dewang_06'){
+            personName = "Dewang Khandelwal";
+            personUrl = "http://localhost:3000/maximus.jpeg";  
+        }
+        else if(newUsername === 'sputnik_7'){
+            personName = "Nikhil Bhalerao";
+            personUrl = "http://localhost:3000/michael.jpg";  
+        }
         let newPost = document.createElement('div');
         newPost.classList.add('general-posts-one');
-        newPost.innerHTML = `
+
+        if(tweetImage==null){
+            newPost.innerHTML = `
+                <div class="post-picture-one">
+                    <img src="${personUrl}" alt="Profile Picture">
+                </div>
+                <div class="profile-info-one">
+                    <div class="profile-holder-one">
+                        <p id="post-name-one">${personName}</p>
+                        <p class="username-one" id="postusername-one">${newUsername} 1s</p>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi" id="threedoticon"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                    </div>
+                    <div class="post-text-one"><p>${newtweetContent}</p></div>
+                    <div class="post-icons">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.30-.504-.30c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path></g></svg>
+                    <div class="bookmark-upload">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"></path></g></svg>
+                    </div>
+                </div>
+                </div>
+            `;
+        }
+        else{
+            newPost.innerHTML = `
             <div class="post-picture-one">
                 <img src="${personUrl}" alt="Profile Picture">
             </div>
             <div class="profile-info-one">
                 <div class="profile-holder-one">
                     <p id="post-name-one">${personName}</p>
-                    <p class="username-one" id="postusername-one">${username} 1s</p>
+                    <p class="username-one" id="postusername-one">${newUsername} 1s</p>
                     <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi" id="threedoticon"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
                 </div>
                 <div class="post-text-one"><p>${newtweetContent}</p></div>
+                <img class="tweet-image" id="tweet-image-desktop-one" src=${tweetImage}>
                 <div class="post-icons">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path></g></svg>
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi"><g><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"></path></g></svg>
@@ -265,11 +404,16 @@ function appendTweets(tweets) {
             </div>
             </div>
         `;
+        }
         document.querySelector('.posts-one').prepend(newPost);
         document.getElementById('post-input-one').value = '';
     });
-}
 
+    
+}
+/**
+ * it introduces the scroll functionality so that the api is called again after 5 tweets
+ */
 
 window.addEventListener('scroll', async () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
@@ -286,50 +430,52 @@ window.addEventListener('load', async () => {
     appendTweets(data.tweets);
     appendTweetsMobile(data.tweets);
 });
-
-
-
-
-
+/**
+ * Functionality to the post button on the desktop
+ */
 document.getElementById('tweet-btn-one').addEventListener('click', function(event) {
     event.preventDefault();
     let postContent = document.getElementById('post-input-one').value;
+    let newImageElement = document.getElementById('newImageElement');
+    let imageContent = newImageElement ? newImageElement.src : null;
     let usernameone = `${username}`;
-    if(postContent==''){
-        throw error("Empty Post");
+
+    // Check if both postContent and imageContent are empty
+    if (!postContent && !imageContent) {
+        throw new Error("Empty Post");
     }
-    postTweet(usernameone, postContent);
-    
+
+    postTweet(usernameone, postContent, imageContent);
 });
 
+/**
+ * Functionality to the post button on the phone
+ */
 document.getElementById('tweet-btn').addEventListener('click', function(event) {
     event.preventDefault();
     let postContent = document.getElementById('post-input').value;
+    let newImageElement = document.getElementById('newImageElement');
+    let imageContent = newImageElement ? newImageElement.src : null;
     let usernameone = `${username}`;
-    if(postContent==''){
-        throw error("Empty Post");
+    if (!postContent && !imageContent) {
+        throw new Error("Empty Post");
     }
-    postTweet(usernameone, postContent);
+
+    postTweet(usernameone, postContent,imageContent);
     
 });
+document.getElementById('imageInput').addEventListener('change', (event) => {
+    const files = event.target.files;
+    const imagePreview = document.getElementById('imagePreview');
+    const newImageElement = document.createElement('img');
 
-document.getElementById('profile-photo').addEventListener('click', function() {
-    showNavigation();
+    if (files && files[0]) {
+        const imageUrl = URL.createObjectURL(files[0]);
+        newImageElement.src = imageUrl;
+        newImageElement.id = 'newImageElement'; // Assign id to the new image element
+
+        console.log("the url that I am getting here is ", imageUrl);
+        imagePreview.appendChild(newImageElement);
+    }
 });
-document.getElementById('#go-back').addEventListener('click', function() {
-    hideNavigation();
-});
-function showNavigation() {
-    let navigationSection = document.querySelector('.mobile-navigation-section');
-    navigationSection.style.display = 'block';
-    document.querySelector(".main-icons").style.display = "none";
-    document.querySelector(".feed-icons").style.display = "none"
-    document.querySelector(".posts").style.display = "none"
-}
-function hideNavigation() {
-    let navigationSection = document.querySelector('.mobile-navigation-section');
-    navigationSection.style.display = 'none';
-    document.querySelector(".main-icons").style.display = "flex";
-    document.querySelector(".feed-icons").style.display = "flex";
-    document.querySelector(".posts").style.display = "block";
-}
+

@@ -575,12 +575,18 @@
 #send-button {
     padding: 8px 15px;
     font-size: 16px;
-    background-color: #075e54;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width:15%;
+    svg{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+    padding-top: 15px;
+    background-color: #000000;
 }
 
 #send-button:hover {
@@ -678,6 +684,12 @@
     margin:10px;
     border-radius: 50%;
 }
+
+.tweet-image{
+    width:300px;
+    height: 150px;
+}
+
 
 }
 

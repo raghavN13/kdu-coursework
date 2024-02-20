@@ -12,27 +12,25 @@ const server = http.createServer(app);
 const io = socketIo(server);
 let tweets = [];
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE'); // Allow specific HTTP methods
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow specific headers
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE'); 
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
     if (req.method === 'OPTIONS') {
-        res.sendStatus(200); // Respond to preflight requests
+        res.sendStatus(200); 
     } else {
-        next(); // Continue to the next middleware
+        next(); 
     }
 });
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(path.join(__dirname,'public')));
-app.use(bodyParser.json());
 
 
 app.post('/users/feed', (req, res) => {
-    console.log("the body is ", req.body);
-    console.log("entering in the server side post");
     console.log(req.body.username);
     console.log(req.body.tweetContent);
-    const { username, tweetContent } = req.body;
+    const { username, tweetContent, imageUrl } = req.body;
 
     const tweetId = generateTweetId();
 
@@ -40,6 +38,7 @@ app.post('/users/feed', (req, res) => {
         id: tweetId,
         username,
         content: tweetContent,
+        imageUrl: imageUrl, 
         timestamp: new Date().toISOString()
     };
 
@@ -55,24 +54,22 @@ app.post('/users/feed', (req, res) => {
 });
 
 
+
+
 app.get('/users/feed', (req, res) => {
-    const username = req.query.username;
     const page = parseInt(req.query.page) || 1;
     const pageSize = parseInt(req.query.pageSize) || 5;
-
-    // Calculate the startIndex and endIndex based on the page and pageSize
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
 
-    // Slice the tweets array to get the subset for the current page
-    const userTweets = tweets.filter(tweet => tweet.username === username);
-    const paginatedTweets = userTweets.slice(startIndex, endIndex);
+    const paginatedTweets = tweets.slice(startIndex, endIndex);
 
     res.json({
         tweets: paginatedTweets,
-        totalTweets: userTweets.length  // Include total number of tweets for pagination
+        totalTweets: tweets.length 
     });
 });
+
 
 
 function generateTweetId() {
@@ -81,24 +78,19 @@ function generateTweetId() {
 
 
 app.get('/users/login',(req,res) => {
-    res.sendFile(path.join(__dirname,'./public/login.html'));
+    res.sendFile(path.join(__dirname,'./public/Html/login.html'));
 });
 app.get('/users/posts', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/view.html'));
+    res.sendFile(path.join(__dirname, './public/Html/view.html'));
 });
 
 app.post('/users/login', async(req,res)=>{
     try{
-        console.log("the username entered by the user is " , req.body.username);
         let foundUser = userList.find((data) => req.body.username === data.user_name);
         if(foundUser){
 
             let submittedPassword = req.body.password;
             let storedPassword = foundUser.password;
-
-            console.log(submittedPassword);
-            console.log(storedPassword);
-
             const passwordMatch = await bcrypt.compare(submittedPassword,storedPassword);
             if(passwordMatch){
                 res.redirect(`/users/posts?username=${foundUser.user_name}`);
@@ -123,10 +115,8 @@ app.post('/users/login', async(req,res)=>{
 const users = {};
 
 io.on('connection', socket => {
-    console.log('a user connected');
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
         if (socket.username) {
             delete users[socket.username];
             updateUsers();
@@ -137,7 +127,6 @@ io.on('connection', socket => {
         const targetSocket = users[to];
         if (targetSocket) {
             targetSocket.emit('private message', { from: socket.username, message });
-            // Also emit the message to the sender so they can see their own message
             socket.emit('private message', { from: 'You', message });
         }
     });

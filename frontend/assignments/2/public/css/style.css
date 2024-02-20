@@ -295,7 +295,6 @@
     display: flex;
     flex-direction: column;
     border-left: 1px solid #16181c;
-    border-right: 1px solid #16181c;
     width: 60%;
     height: 720px;
   }
@@ -390,7 +389,6 @@
     margin-top: 15px;
     height: 50px;
     padding-top: 10px;
-    border: 1px solid #16181c;
   }
   .user-msg-desktop-item:hover {
     background-color: rgba(240, 240, 240, 0.6156862745); /* or any other slight grey color */
@@ -404,5 +402,32 @@
   .highlight {
     /* Add your highlighting styles here */
     background-color: yellow;
+  }
+  #msg-bar-profile-picture {
+    display: none;
+  }
+  .tweet-image {
+    width: 494px;
+    height: 200px;
+  }
+  #sidebar #message-bar-profile-picture {
+    display: none;
+  }
+  #send-button {
+    padding-top: 15px;
+    background-color: #000000;
+  }
+  #send-button svg {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
+  .attachment {
+    margin-top: 10px;
+    padding-bottom: 0;
+    padding-top: 5px;
+  }
+  .attachment svg {
+    padding-top: 2px;
   }
 }/*# sourceMappingURL=style.css.map */

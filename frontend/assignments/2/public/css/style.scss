@@ -7,7 +7,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000000;
     color: white;
-    // font-size: 62.5%;
   }
   @media only screen and (min-width:700px) {
     
@@ -321,6 +320,9 @@ svg{
     color:white;
     padding:20px 5px;
     width:40%;
+    #message-bar-profile-picture{
+        display: none;
+    }
 }
 
 #users-list {
@@ -370,12 +372,18 @@ svg{
 #send-button {
     padding: 8px 15px;
     font-size: 16px;
-    background-color: #075e54;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width:15%;
+    svg{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+    padding-top: 15px;
+    background-color: #000000;
 }
 
 #send-button:hover {
@@ -454,6 +462,21 @@ svg{
     /* Add your highlighting styles here */
     background-color: yellow;
 }
+#msg-bar-profile-picture{
+    display: none;
+}
+.tweet-image{
+    width:494px;
+    height: 200px;
+}
 
+.attachment{
+    margin-top: 10px;
+    svg{
+        padding-top: 2px;
+    }
+    padding-bottom: 0;
+    padding-top: 5px;
+}
 
 }

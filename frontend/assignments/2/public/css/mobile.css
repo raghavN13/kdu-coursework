@@ -584,4 +584,17 @@
     margin: 10px;
     border-radius: 50%;
   }
+  .tweet-image {
+    width: 300px;
+    height: 150px;
+  }
+  #send-button {
+    padding-top: 15px;
+    background-color: #000000;
+  }
+  #send-button svg {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
 }/*# sourceMappingURL=mobile.css.map */

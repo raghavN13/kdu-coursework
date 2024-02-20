@@ -11,6 +11,10 @@ let currentConversation = null;
 const messageHistory = {}; // Object to store message history for each user
 const unreadMessages = {}; // Object to store unread messages for each user
 
+/**
+ * this even handler is for loading the conversation of the user on the page when the user is clicked
+ */
+
 usersList.addEventListener('click', event => {
     const selectedUser = event.target.textContent;
     const para = document.getElementById("chat-header-para");
@@ -36,6 +40,9 @@ sendButton.addEventListener('click', () => {
 });
 
 // Socket events
+/**
+ * this is for updating the user on the page when a new user joins 
+ */
 
 socket.on('update users', users => {
     usersList.innerHTML = '';
@@ -80,6 +87,9 @@ socket.on('update users', users => {
     });
 });
 
+/**
+ * This ensures that the message is sent privately to user that is being targetted
+ */
 
 socket.on('private message', ({ from, to, message }) => {
     updateMessageHistory(from, from, message);
@@ -132,6 +142,10 @@ function updateMessageHistory(user, from, message) {
     messageHistory[user].push({ from, message });
 }
 
+/**
+ * loads the conversation for the user checking the unread messages for the user and if there are any it loads them
+ * @param {*} user 
+ */
 function loadConversation(user) {
     chatMessages.innerHTML = '';
     if (messageHistory[user]) {
@@ -147,7 +161,9 @@ function loadConversation(user) {
     }
 }
 
-
+/**
+ * this event listener is for the functionality of the back button in messages
+ */
 
 mobileMessageIcon.addEventListener('click',()=>{
     app.style.display = 'block';
