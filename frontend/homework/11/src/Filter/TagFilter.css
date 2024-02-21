@@ -1,0 +1,29 @@
+.tag-filter-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.tag-filter-container * {
+  margin: 0;
+  padding: 0;
+}
+.tag-filter-container .tag-content {
+  background-color: bisque;
+  padding: 0 5px;
+  display: flex;
+  margin: 0 1rem;
+  font-size: large;
+}
+.tag-filter-container .tag-content div {
+  padding-top: 0.75rem;
+}
+.tag-filter-container .tag-content button {
+  font-size: medium;
+  border: none;
+  padding-left: 0.5rem;
+  background-color: bisque;
+}
+.tag-filter-container .tag-filter {
+  display: flex;
+  font-size: small;
+}/*# sourceMappingURL=TagFilter.css.map */
