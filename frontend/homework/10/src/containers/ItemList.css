@@ -1,0 +1,31 @@
+.itemList {
+  margin: 1rem;
+}
+.itemList * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.itemList .item-list-header {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.itemList ul {
+  list-style-type: none;
+}
+.itemList #list {
+  margin: 0;
+  padding: 0;
+}
+.itemList #list .actual-list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(207, 199, 199, 0.51);
+  padding-left: 1rem;
+}
+.itemList #list .actual-list-item button {
+  background-color: red;
+  font-size: 16px;
+  width: 3rem;
+}/*# sourceMappingURL=ItemList.css.map */
