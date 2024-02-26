@@ -1,0 +1,14 @@
+.navbar{
+    background-color: rgb(92, 92, 236);
+    height:3.5rem;
+    display: flex;
+    .search-box{
+        display: flex;
+    }
+    .sort{
+        display: flex;
+    }
+    .filter{
+        display: flex;
+    }
+}
