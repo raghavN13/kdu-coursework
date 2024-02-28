@@ -1,14 +1,63 @@
 .navbar{
     background-color: rgb(92, 92, 236);
-    height:3.5rem;
+    height:3rem;
     display: flex;
+    justify-content: space-between;
+    
     .search-box{
         display: flex;
+        flex-grow: 1;
+        input{
+            height:50%;
+            margin-top: 0.75rem;
+             margin-left: 2rem;
+        }
     }
-    .sort{
+    .left-side-navbar{
         display: flex;
+        flex-grow: 1;
+        margin-left: 3rem;
+        justify-content: space-between;
+        .sort{
+            display: flex;
+            flex-grow: 1;
+            p{
+                color: white;
+                font-size: large;
+                font-weight: 600;
+                
+            }
+            align-items: center;
+            select{
+                height: 50%;
+                margin-top: 0.5rem;
+                width: 7rem;
+                margin-left: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+        }
+        .filter{
+            display: flex;
+            flex-grow: 1;
+            padding-left: 14rem;
+            p{
+                color: white;
+                font-size: large;
+                font-weight: 600;
+                
+            }
+            align-items: center;
+            select{
+                height: 50%;
+                width:10rem;
+                margin-bottom: 0rem;
+                margin-left: 0.6rem;
+            }
+        }
     }
-    .filter{
-        display: flex;
-    }
+}
+.search-icon{
+    color: white;
+    margin-top: 0.45rem;
 }

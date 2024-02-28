@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './Navbar.css';
 import { useItemContext } from '../ItemContext';
+import SearchIcon from '@mui/icons-material/Search';
 
 export function Navbar() {
     const { setSearchTerm, setFilterCategory, setSortBy } = useItemContext();
@@ -19,7 +20,6 @@ export function Navbar() {
 
     return (
         <div className="navbar">
-            Search:
             <div className="search-box">
                 <input
                     type="search"
@@ -27,7 +27,14 @@ export function Navbar() {
                     id="search"
                     onChange={handleSearchChange}
                 />
+                <div className="search-icon">
+                    <SearchIcon className='search-icon'></SearchIcon>
+                </div>
+                
             </div>
+            <div className="left-side-navbar">
+
+            
             <div className="filter">
                 <p>Filter:</p>
                 <select
@@ -53,6 +60,7 @@ export function Navbar() {
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                 </select>
+            </div>
             </div>
         </div>
     );
