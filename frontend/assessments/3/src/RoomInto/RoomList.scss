@@ -1,0 +1,112 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .items-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .item {
+      cursor: pointer;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  
+      &.selected {
+        background-color: lightblue; // Change background color when selected
+      }
+    }
+  
+    .date-selection {
+      margin-top: 2rem;
+      height: 3rem;
+      font-size: 1.5rem;
+  
+      #start-date {
+        margin: 1.5rem;
+        font-size: large;
+      }
+  
+      #end-date {
+        margin: 3rem;
+        font-size: large;
+      }
+    }
+  
+    .add-on-selection {
+      margin-top: 2rem;
+      font-size: 2rem;
+  
+      .addOn-select {
+        background-color: orange;
+        height: auto;
+      }
+  
+      .add-ons {
+        display: flex;
+        flex-wrap: wrap;
+  
+        .add-on {
+          cursor: pointer;
+          margin: 5px;
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+  
+          &.selected {
+            background-color: lightgreen; // Change background color when selected
+          }
+        }
+      }
+    }
+  
+    .select-date {
+      background-color: orange;
+      width: 100%;
+      padding-left: 2rem;
+      font-size: 2rem;
+    }
+  
+    .select-room-type {
+      background-color: orange;
+      width: 100%;
+      padding-left: 2rem;
+      font-size: 2rem;
+      height: 3rem;
+    }
+  
+    .addOn-select {
+      width: 100%;
+    }
+  
+    .total-cost {
+      margin: 2rem;
+      font-size: 2rem;
+    }
+  
+    .bill-breakdown {
+      margin: 1.5rem;
+      font-size: 1.5rem;
+    }
+  
+    .submit-button {
+      background-color: orange;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+  }
+  .error-message{
+    margin: 3rem;
+  }
