@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadProductsAndNotify } from './redux/ProductSlice'; // Import the thunk
 import { AppDispatch, RootState } from './redux/Store';
 import { Products } from './Products';
+import { Navbar } from './Navbar/Navbar';
 
 function App() {
     const reduxDispatch: AppDispatch = useDispatch();
@@ -16,6 +17,7 @@ function App() {
 
     return (
         <div>
+            <Navbar/>
             <Products />
             {isVisible && <div>{slackMessage}</div>}
         </div>

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/Store";
+import { Home } from "./Home";
 
 export function Products(){
-    const products = useSelector((state:RootState)=>state.products.products);
     const state = useSelector((state:RootState)=>state.products.state);
     const productError = useSelector((state:RootState)=>state.products.error);
 
@@ -11,7 +11,7 @@ export function Products(){
     }
 
     if(state==="fulfilled"){
-        return <div>${JSON.stringify(products)}</div>
+        return <Home />
     }
 
     if(state==="error"){
