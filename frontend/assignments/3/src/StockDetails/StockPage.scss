@@ -7,7 +7,7 @@
   }
   
   .stock-container-left {
-    width: 70%;
+    width: 75%;
     height: 100%;
   
     .stock-container-left-header {
@@ -106,6 +106,18 @@
           background-color: #f0f0f0;
         }
       }
+
+      .stock-container-left-buy{
+        background-color: #b2f2bb;
+        text-align: center;
+        align-items: center;
+        font-size: large;
+      }
+      .stock-container-left-sell{
+        background-color: #ffc9c9;
+        text-align: center;
+        font-size: large;
+      }
     }
   
     .stock-container-left-graph {
@@ -117,7 +129,7 @@
   }
   
   .stock-container-right {
-    width: 30%;
+    width: 25%;
   
     .user-history,
     .global-history {
@@ -129,6 +141,7 @@
   
     .global-history {
       margin-top: 0;
+      height:49%
     }
   
     ul {
@@ -138,8 +151,7 @@
     }
   
     li {
-      padding: 1rem;
-      border-bottom: 1px solid #ccc;
+        margin: 1.1rem;
   
       &:last-child {
         border-bottom: none;
@@ -155,12 +167,11 @@
     border: 1px solid black;
     height: 85.5%;
     margin: 0 1.5rem 1.5rem 1.5rem;
-    flex-direction: row-reverse; /* Display bars from right to left */
+    flex-direction: row-reverse; 
   }
   
   .bar {
-    width: 20px; /* Set a fixed width for the bars */
-    // margin-left: 5px; /* Add margin between bars */
+    width: 20px;
     
     
   }
@@ -169,15 +180,12 @@
     display: flex;
     flex-direction: row; /* Set the direction of the flex container to reverse */
     align-items: flex-end; /* Align items at the end of the container */
-    height: 300px; /* Set a fixed height for the container */
-    padding-left:2rem;
-    padding-right:2rem;
+    height: 300px;
     color: greenyellow
 }
 .stock-container-left-graph {
     position: relative;
-    right: 1rem;
-    width: calc(100% - 5rem); /* Adjust width to be less */
+    width: calc(100% - 3rem); /* Adjust width to be less */
     height: 100%;
 }
 
@@ -205,3 +213,75 @@
     background-color: rgba(169, 169, 169, 0.5); /* Grey color */
 }
 
+
+.left-side-user-history{
+    justify-content: space-between;
+    
+    border-radius: 10px;
+    .quantity{
+        font-size: larger;
+        font-weight: 500;
+    }
+
+}
+.right-side-user-history{
+    .Buy{
+        font-size: larger;
+        color: #2f9c44;
+        margin:2rem;
+    }
+    .Sell{
+        font-size: larger;
+        color: #e03131;
+        margin:2rem;
+    }
+}
+
+.user-history-container{
+    display: flex;
+    border:1px solid #000;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 10px;
+    li{
+        border:none;
+    }
+}
+.user-history{
+    h2{
+        margin-left: 2rem;
+    }
+}
+
+.global-history{
+    h2{
+        margin-left: 2rem;
+    }
+    .info{
+        font-size: large;
+        font-weight: 500;
+        p{
+            margin: 0;
+        }
+    }
+    .time{
+        p{
+            margin: 0;
+        }
+    }
+}
+.stock-container-left-quantity{
+    input{
+        text-align: center;
+    }
+}
+
+.stock-container-left-stock-name{
+    .symbol{
+        margin-right:1.1rem;
+        width: 2.5rem;
+        text-align: center;
+        border:0.5px solid orangered;
+        background-color: orange;
+    }
+}

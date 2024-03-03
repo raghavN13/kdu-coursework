@@ -28,7 +28,7 @@ io.on('connection',(socket)=>{
     };
 
     // Send random number every 5 seconds
-    const interval = setInterval(sendRandomNumber, 10000);
+    const interval = setInterval(sendRandomNumber, 7000);
 
 
     socket.on('buyRequest',(data) => {

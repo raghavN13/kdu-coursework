@@ -23,10 +23,10 @@ const stockSlice = createSlice({
   initialState,
   reducers: {
     addTransaction(state, action: PayloadAction<Transaction>) {
-      state.transactions.push(action.payload);
+      state.transactions.unshift(action.payload);
     },
     addHistoryLocal(state,action:PayloadAction<Transaction>){
-      state.history.push(action.payload);
+      state.history.unshift(action.payload);
     }
   },
 });

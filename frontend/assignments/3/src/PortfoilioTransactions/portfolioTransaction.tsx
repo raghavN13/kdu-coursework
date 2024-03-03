@@ -33,14 +33,14 @@ export default function Portfolio() {
 
 
 
-    const mergedTransactions = [...transactions, ...history];
+    const combinedTransactions = [...transactions, ...history];
 
 
-    let filteredStocks = mergedTransactions;
+    let filteredStocks = combinedTransactions;
     console.log(search);
 
     if (search) {
-        filteredStocks = mergedTransactions.filter(stock => stock.stock_name.toLowerCase().includes(search.toLowerCase()));
+        filteredStocks = combinedTransactions.filter(stock => stock.stock_name.toLowerCase().includes(search.toLowerCase()));
     }
 
     if (selectedFilters.length > 0) {
@@ -194,16 +194,16 @@ export default function Portfolio() {
                     <hr />
                     <div className="all-stocksTransactions">
                         {stocks.map(stock => (
-                            <div key={stock.id}>
+                            <div key={stock.stock_name}>
                                 <input
                                     type="checkbox"
-                                    id={stock.id}
+                                    id={stock.stock_name}
                                     name={stock.stock_symbol}
                                     value={stock.stock_symbol}
                                     checked={selectedStocks.includes(stock.stock_symbol)}
                                     onChange={() => handleStockChange(stock.stock_symbol)}
                                 />
-                                <label htmlFor={stock.id}>{stock.stock_name}</label>
+                                <label htmlFor={stock.stock_name}>{stock.stock_name}</label>
                             </div>
                         ))}
                     </div>
@@ -211,19 +211,19 @@ export default function Portfolio() {
                 <div className="history">
                     {Object.entries(groupedstocksTransactions).map(([date, stocksTransactions]) => (
                         <div key={date}>
-                            <p>{date}</p>
-                            <hr className='date-line' />
+                            <p className='portfolio-date'>{date}</p>
+                            
                             {stocksTransactions.map((stock) => (
                                 <div className="portfolio-elements" key={stock.id}>
-                                    <div>
+                                    <div className='elements'>
                                         <div>{stock.stock_name}</div>
                                         <div>{stock.stock_symbol}</div>
                                         <div>{stock.transaction_price}</div>
                                         <div>{`${stock.status} ` === 'Passed ' ? <span className='green-dot'></span> : <span className='red-dot'></span>}</div>
-                                        {/* <div>{stock.status}</div> */}
+                                        
 
                                     </div>
-                                    <hr />
+                                    
                                 </div>
                             ))}
                             <br />
