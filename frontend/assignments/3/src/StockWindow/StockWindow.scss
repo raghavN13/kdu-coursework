@@ -1,0 +1,136 @@
+/* StockWindow.scss */
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+.stock-item-main {
+  margin: 3rem;
+
+  .stock-item-header {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid grey;
+    justify-content: space-between;
+    align-items: center;
+
+    .base-price {
+      margin-left: 18rem;
+    }
+
+    .watchlist {
+      text-align: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        font-size: 1.1rem;
+        color: black;
+        font-weight: lighter;
+      }
+
+      &:hover {
+        background-color: green;
+        i {
+          color: white;
+        }
+      }
+
+      &.correct-icon {
+        background-color: green;
+      }
+
+      &.correct-icon:hover {
+        background-color: red;
+      }
+
+      &.cross-icon {
+        background-color: red;
+      }
+
+      &.cross-icon:hover {
+        background-color: green;
+        i {
+          color: black; // Change the color of the icon to black when hovered
+        }
+      }
+    }
+  }
+
+  .watchlist-container .watchlist:hover {
+    background-color: transparent;
+  }
+
+  .stock-item-container {
+    border: 1px solid black;
+    width:70%;
+    border-radius: 20px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .pagination button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+
+  .pagination button:hover {
+    color: green;
+  }
+
+  .pagination button:disabled {
+    color: lightgray;
+    cursor: not-allowed;
+  }
+
+  .pagination .ellipsis {
+    margin: 0 0.5rem;
+  }
+}
+.item-body{
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.stock-item-header-title{
+  border: none;
+  border-bottom: 1px solid black;
+  .company{
+    padding-left: 3rem;
+    font-weight: bold;
+  }
+  .base-price{
+    padding-right: 2rem;
+    font-weight: bold;
+  }
+  .watchlist-stocks{
+    font-weight: bold;
+    padding-right: 2rem;
+
+  }
+}
+.main-container{
+  text-align: center;
+}
+.items-container{
+  text-align: center;
+  align-items: center;
+  padding-left: 20rem;
+  
+}
