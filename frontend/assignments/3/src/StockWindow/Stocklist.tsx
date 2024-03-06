@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/Store";
 import { IStock } from "../redux/StockSlice";
 import { addToWishlist, removeFromWishList } from "../redux/Watchlist";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import { useNavigate } from "react-router-dom";
 
 export const Stocklist = () => {
   const stocks = useSelector((state: RootState) => state.stocks.stocks);
   const wishlistStocks = useSelector((state: RootState) => state.wishlist.WishlistStocks);
   const dispatch = useDispatch();
-  const itemsPerPage = 10;
+  const itemsPerPage = 7; // Adjust this value to change the number of entries per page
   const [currentPage, setCurrentPage] = useState(1);
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
 
   const handleNavigateToDetailPage = (stockName: string) => {
     navigate(`/stock/${stockName}`);
@@ -44,11 +44,14 @@ export const Stocklist = () => {
     setCurrentPage(pageNumber);
   };
 
+  const renderWatchlistIcon = (item: IStock) => {
+    return isInWishlist(item) ? <i className="fi fi-rr-check"></i> : <i className="fi fi-rr-plus"></i>;
+  };
+
   const renderPaginationButtons = () => {
     const buttons = [];
-    const maxButtons = 5; // Maximum number of pagination buttons to show
+    const maxButtons = 5;
 
-    // Logic for rendering pagination buttons
     if (totalPages <= maxButtons) {
       for (let i = 1; i <= totalPages; i++) {
         buttons.push(
@@ -125,7 +128,7 @@ export const Stocklist = () => {
               <div key={item.stock_name} className="item stock-item-header" >
                 <div className="show">
                   <p className="stock-symbol company" onClick={() => handleNavigateToDetailPage(item.stock_name)}>
-                    ${item.stock_symbol}
+                    {item.stock_symbol}
                   </p>
                 </div>
                 <p className="stock-price base-price">{item.base_price}</p>
@@ -133,11 +136,7 @@ export const Stocklist = () => {
                   className={`watchlist ${isInWishlist(item) ? "correct-icon" : ""}`}
                   onClick={() => handleAddToWatchlistButtonClick(item)}
                 >
-                  {isInWishlist(item) ? (
-                    <i className="fi fi-rr-check"></i>
-                  ) : (
-                    <i className="fi fi-rr-plus"></i>
-                  )}
+                  {renderWatchlistIcon(item)}
                 </button>
               </div>
             ))}

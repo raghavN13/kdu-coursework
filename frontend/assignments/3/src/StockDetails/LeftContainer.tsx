@@ -8,6 +8,7 @@ import { io } from 'socket.io-client';
 import { addHistoryLocal, addTransaction } from '../redux/transactions';
 import { IHistory, addHistory } from '../redux/HistorySlice';
 
+
 export default function LeftContainer() {
     const stocks = useSelector((state: RootState) => state.stocks.stocks);
     const { stockNameFromUrl } = useParams<{ stockNameFromUrl: string }>();
@@ -20,9 +21,12 @@ export default function LeftContainer() {
     const [userBudget, setUserBudget] = useState(5000);
     const stockTransaction = useSelector((state: RootState) => state.stocks.stocksTransaction);
     const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
+    const [prevRandomNumber, setPrevRandomNumber] = useState(501);
     const containerRef = useRef<HTMLDivElement>(null);
-    const [newPrice, setNewPrice] = useState();
-    
+    const [newPrice, setNewPrice] = useState<number>(selectedStockData?.base_price ?? 0);
+    const [priceChange, setPriceChange] = useState<number>(0);
+    const [percentage,setPercentage] = useState<string>()
+
     useEffect(() => {
 
         setSelectedStock(stockNameFromUrl || stocks[0].stock_name);
@@ -33,8 +37,14 @@ export default function LeftContainer() {
         setSelectedStockData(stock || null);
     }, [selectedStock, stocks]);
 
+    useEffect(() => {
+        if (selectedStockData) {
+            setNewPrice(selectedStockData.base_price);
+        }
+    }, [selectedStockData]);
 
-    console.log("the url here is " , stockNameFromUrl)
+
+    console.log("the url here is ", stockNameFromUrl)
     useEffect(() => {
         const socket = io('http://localhost:5000');
         socket.on('transaction', (transactionData) => {
@@ -42,15 +52,28 @@ export default function LeftContainer() {
             dispatch(addTransaction(transactionData));
         });
         socket.on('newRandomNumber', (randomNumber) => {
+            // Update state with the new random number appended to the existing array
             setRandomNumbers(prevNumbers => [...prevNumbers, randomNumber]);
-            console.log("the selected stockdata is ",selectedStockData);
-            console.log("the selected stock data base price is " , selectedStockData?.base_price);
-            setNewPrice(selectedStockData?.base_price);
+            console.log(randomNumber);
+            console.log("prev", prevRandomNumber);
+            if (prevRandomNumber > randomNumber) {
+                setNewPrice(prevPrice => prevPrice - randomNumber);
+            }
+            else {
+                setNewPrice(prevPrice => prevPrice + randomNumber);
+            }
+            const priceChange = randomNumber - prevRandomNumber;
+            setPriceChange(priceChange);
+            const percentageChange = Math.abs((priceChange / prevRandomNumber) * 100).toFixed(2);
+            setPercentage(percentageChange);
+            setPrevRandomNumber(randomNumber);
+            
         });
         return () => {
             socket.disconnect();
         };
-    }, []);
+    }, [prevRandomNumber]);
+
 
     useEffect(() => {
         const updatedBarsColors = randomNumbers.map((randomNumber, index) => {
@@ -141,7 +164,7 @@ export default function LeftContainer() {
     }
 
 
-    const navigate = useNavigate(); // Initialize the navigate function
+    const navigate = useNavigate(); 
 
     const handleStockSelect = (stockName: string) => {
         setSelectedStock(stockName);
@@ -155,7 +178,7 @@ export default function LeftContainer() {
             let totalBarWidth = 0;
             const barsToDelete: number[] = [];
             randomNumbers.forEach((randomNumber, index) => {
-                totalBarWidth += 30; // Assuming each bar has a width of 30px
+                totalBarWidth += 30; 
                 if (totalBarWidth > containerWidth) {
                     barsToDelete.push(index);
                 }
@@ -165,12 +188,12 @@ export default function LeftContainer() {
             }
         }
     }, [randomNumbers]);
-    
+
     console.log("the new price", newPrice)
     useEffect(() => {
         if (stocks.length > 0) {
             setSelectedStock(stockNameFromUrl || stocks[0].stock_name);
-            setRandomNumbers([]); // Reset random numbers when the selected stock changes
+            setRandomNumbers([]);
         }
     }, [stocks, stockNameFromUrl]);
 
@@ -194,9 +217,19 @@ export default function LeftContainer() {
                         </div>
                     </div>
                     <div className="stock-container-left-price">
+    <p className='price'>Price :</p>
+    <p className={`actual-price ${priceChange > 0 ? 'green' : 'red'}`}>{newPrice}</p>
+    <p className={`arrow ${priceChange > 0 ? 'up-arrow' : 'down-arrow'}`}>
+        {priceChange > 0 ? <i className="fi fi-rr-arrow-small-up"></i> : <i className="fi fi-rr-arrow-small-down"></i>}
+    </p>
+    <p className="percentage">
+        {percentage}%
+    </p>
+</div>
 
-                        {newPrice}
-                    </div>
+
+
+
                     <div className="stock-container-left-quantity">
                         <input
                             type="string"
@@ -219,7 +252,7 @@ export default function LeftContainer() {
                         {[...Array(3)].map((_, index) => (
                             <div className="horizontal-line" style={{ top: `${(index + 1) * 33.33}%` }} key={index}></div>
                         ))}
-                        {/* Vertical lines */}
+                      
                         {[...Array(5)].map((_, index) => (
                             <div className="vertical-line" style={{ left: `${(index + 1) * 20}%` }} key={index}></div>
                         ))}

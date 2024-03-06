@@ -5,14 +5,12 @@ import { RootState } from '../redux/Store';
 import { useParams } from 'react-router-dom';
 
 export default function RightContainer() {
-    // Get transactions from Redux store
     const transactions = useSelector((state: RootState) => state.transaction.transactions);
     const history = useSelector((state: RootState) => state.transaction.history);
     const { stockNameFromUrl } = useParams<{ stockNameFromUrl: string }>();
     console.log(stockNameFromUrl);
     const randomNames = ["John", "Emma", "Michael", "Sophia", "James"];
 
-    // Select a random name from the array
     const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
 
     return (
@@ -40,7 +38,6 @@ export default function RightContainer() {
                     </ul>
                 </div>
                 <div className="global-history">
-                    <h2>Global History</h2>
                     <ul>
                         {transactions
                             .filter(transaction => transaction.stock === stockNameFromUrl)

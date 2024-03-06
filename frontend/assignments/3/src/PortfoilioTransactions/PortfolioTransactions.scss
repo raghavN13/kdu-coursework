@@ -1,3 +1,5 @@
+@media screen and  (min-width: 415px){
+
 .portfolio {
     display: flex;
     justify-content: space-around;
@@ -106,4 +108,123 @@
 }
 .portfolio-date {
    border-bottom: 1px dashed grey;
+}
+}
+
+
+@media screen and (max-width: 414px) and (max-height: 826px){
+
+    .portfolio {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 0;
+        
+        .filter {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 10px 0 ;
+            border: 1px solid grey;
+            border-radius: 15px;
+            height: fit-content;
+    
+            .filter-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 15px;
+                font-size: larger;
+                .clear-filter {
+                    color: rgb(17, 114, 170);
+                }
+            }
+    
+            #search-box {
+                margin: 10px;
+                border: 1px solid gray;
+                border-radius: 5px;
+                height: 25px;
+            }
+    
+            .search-by-date {
+                display: flex;
+                gap: 10px;
+                margin: 10px;
+            }
+    
+            .passed-failed {
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                div {
+                    input {
+                        margin-right: 5px;
+                    }
+                }
+            }
+    
+            .all-stocksTransactions {
+                max-height: 150px;
+                overflow-y: scroll;
+                margin: 10px;
+                input {
+                    margin-right: 5px;
+                }
+            }
+        }
+    
+        .history {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            width: 100%;
+            div {
+                display: flex;
+                flex-direction: column;
+                margin: 5px 0 5px 0;
+                div {
+                    display: flex;
+                    div {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 20px;
+                        div {
+                            width: 200px;
+                        }
+                    }
+    
+                    .date-line{
+                        color: whitesmoke;
+                    }
+                    .green-dot {
+                        height: 10px;
+                        width: 10px;
+                        display: inline-block;
+                        border-radius: 50%;
+                        background-color: rgb(1, 149, 38);
+                      }
+    
+                    .red-dot {
+                        height: 10px;
+                        width: 10px;
+                        background-color: red;
+                        border-radius: 50%;
+                        display: inline-block;
+                      }
+    
+    
+                }
+            }
+        }
+    }
+    
+    .portfolio-elements{
+        border-bottom: 1px solid black;
+    }
+    .portfolio-date {
+       border-bottom: 1px dashed grey;
+    }
+    
+
 }

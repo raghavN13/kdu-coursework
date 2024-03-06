@@ -70,7 +70,6 @@
     display: none;
 }
 
-/* Media query for screen widths less than or equal to 450px */
 @media screen and (width <= 450px) {
     .dashboard-navbar-right {
         display: none;
@@ -89,4 +88,17 @@
         display: block;
     }
 
+}
+.dashboard-option {
+    display: flex;
+}
+
+.explore, .my-watchlist {
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: larger;
+}
+
+.active {
+    border-bottom: 3px solid blue;
 }

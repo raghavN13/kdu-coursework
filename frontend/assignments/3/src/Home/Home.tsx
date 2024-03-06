@@ -29,7 +29,11 @@ export default function Home() {
       <DashboardNavbar/>
       <BottomNavbar onTabChange={handleTabChange}/>
       <StockWindow isWatchlistSelected={isWatchlistSelected}/>
-      {isVisible && <div>{slackMessage}</div>}
+      {isVisible && (
+                <div style={isVisible ? { display: 'block', position: 'fixed', bottom: '10px', left: '50%', transform: 'translateX(-50%)', background: '#f1f1f1', padding: '10px', borderRadius: '5px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)' } : { display: 'none' }}>
+                    {slackMessage}
+                </div>
+            )}
 
     </div>
   )

@@ -11,10 +11,62 @@
     border-bottom: 1px solid grey;
     justify-content: space-between;
     align-items: center;
+  }
 
+
+@media screen and  (min-width: 415px){
     .base-price {
       margin-left: 18rem;
+      padding-right: 4rem;
+      
     }
+    .watchlist{
+      padding: 0.5rem;
+    }
+    .stock-item-container {
+      border: 1px solid black;
+      width:70%;
+      border-radius: 20px;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .item-body{
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    .main-container{
+      text-align: center;
+      width: 100%;
+    }
+    .items-container{
+      text-align: center;
+      align-items: center;
+      padding-left: 25rem;
+      
+      
+    }
+    .stock-item-header-title{
+      .company{
+        margin-left: 3rem;
+      }
+    }
+
+    .watchlist-container{
+      align-items: center;
+      text-align: center;
+      margin-left:25rem;
+      width: 75%;
+      i{
+        background-color: rgb(20, 172, 232);
+        padding:5px;
+      }
+    }
+    .company{
+      padding-left: 3rem;
+    }
+    
+  }
 
     .watchlist {
       text-align: center;
@@ -22,57 +74,62 @@
       border: none;
       cursor: pointer;
       transition: background-color 0.3s;
-      padding: 0.5rem;
-      border-radius: 50%;
+      border-radius: 50%; 
       display: flex;
       justify-content: center;
       align-items: center;
-
+    
       i {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        border: 1px solid black;
+        border-radius: 50%;
         color: black;
-        font-weight: lighter;
+        font-weight: bolder;
+        padding: 4px;
+        transition: background-color 0.3s; 
+        height: 20px;
+        width: 20px;
       }
-
+    
       &:hover {
-        background-color: green;
         i {
           color: white;
         }
       }
-
+    
       &.correct-icon {
-        background-color: green;
+        i {
+          background-color: rgb(20, 172, 232); 
+        }
       }
-
+    
       &.correct-icon:hover {
-        background-color: red;
+        i {
+          background-color: red; 
+        }
       }
-
+    
       &.cross-icon {
-        background-color: red;
+        i {
+          background-color: red;
+        }
       }
-
+    
       &.cross-icon:hover {
         background-color: green;
         i {
-          color: black; // Change the color of the icon to black when hovered
+          color: black;
         }
       }
     }
+    
   }
 
   .watchlist-container .watchlist:hover {
     background-color: transparent;
   }
 
-  .stock-item-container {
-    border: 1px solid black;
-    width:70%;
-    border-radius: 20px;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
+
 
 
   .pagination {
@@ -103,20 +160,14 @@
   .pagination .ellipsis {
     margin: 0 0.5rem;
   }
-}
-.item-body{
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
+
+
 .stock-item-header-title{
-  border: none;
   border-bottom: 1px solid black;
   .company{
-    padding-left: 3rem;
     font-weight: bold;
   }
   .base-price{
-    padding-right: 2rem;
     font-weight: bold;
   }
   .watchlist-stocks{
@@ -125,12 +176,79 @@
 
   }
 }
-.main-container{
-  text-align: center;
-}
-.items-container{
-  text-align: center;
-  align-items: center;
-  padding-left: 20rem;
-  
+
+
+
+@media screen and (max-width: 414px) and (max-height: 826px) {
+  .stock-item-main{
+    margin: 0;
+  }
+  .main-container{
+    width:100%;
+  }
+  .items-container {
+    padding: 0; 
+    justify-content: center; 
+    align-items: flex-start;
+    overflow-x: auto; 
+    width: 100%;
+    
+  }
+
+  .stock-item-container {
+    width: 90%; 
+    padding: 1rem; 
+    white-space: nowrap; 
+    height: 100vh;
+  }
+  .item{
+    max-width:414px;
+    margin-top: 2rem;
+    padding-bottom: 2px;
+  }
+
+  .stock-item-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    border-bottom: 1px solid grey;
+  }
+
+  .stock-item-header p {
+    margin: 0; 
+  }
+
+  .base-price {
+    margin-top: 0.5rem; 
+  }
+
+  .watchlist-stocks {
+    margin-top: 0.5rem; 
+  }
+
+  .pagination {
+    margin-top: 1rem; 
+    display: flex; 
+    justify-content: center; 
+  }
+
+  .pagination button {
+    margin: 0 0.3rem;
+  }
+  .company{
+    padding:0;
+  }
+
+  .base-price {
+    margin-left:4rem;
+    margin-right: 3rem;
+  }
+  .stock-item-container{
+    border:1px solid black;
+    border-radius: 10px;
+  }
+  .portfolio{
+    text-align: start;
+    padding-right: 20rem;
+  }
 }

@@ -1,4 +1,5 @@
-
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
 
 .stock-container {
     display: flex;
@@ -37,7 +38,7 @@
           top: calc(100% + 5px);
           left: 0;
           width: 100%;
-          max-height: 200px; // Adjust height as needed
+          max-height: 200px;
           overflow-y: auto;
           background-color: #f9f9f9;
           border: 1px solid #ccc;
@@ -178,17 +179,16 @@
   .stock-container-left-graph {
     overflow-x: hidden;
     display: flex;
-    flex-direction: row; /* Set the direction of the flex container to reverse */
-    align-items: flex-end; /* Align items at the end of the container */
+    flex-direction: row; 
+    align-items: flex-end; 
     height: 300px;
     color: greenyellow
 }
 .stock-container-left-graph {
     position: relative;
-    width: calc(100% - 3rem); /* Adjust width to be less */
+    width: calc(100% - 3rem); 
     height: 100%;
 }
-
 .grid-background {
     position: absolute;
     top: 0;
@@ -202,15 +202,14 @@
     position: absolute;
     width: 100%;
     height: 1px;
-    background-color: rgba(169, 169, 169, 0.5); /* Grey color */
+    border-top: 1px dashed rgba(169, 169, 169, 0.987); 
 }
-
 
 .vertical-line {
     position: absolute;
     height: 100%;
     width: 1px;
-    background-color: rgba(169, 169, 169, 0.5); /* Grey color */
+    border-left: 1px dashed rgb(169, 169, 169); 
 }
 
 
@@ -239,7 +238,7 @@
 
 .user-history-container{
     display: flex;
-    border:1px solid #000;
+    border:2px solid #000;
     justify-content: space-between;
     padding: 8px;
     border-radius: 10px;
@@ -285,3 +284,61 @@
         background-color: orange;
     }
 }
+
+.stock-container-left-price {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.up-arrow {
+    color: green;
+}
+
+.down-arrow {
+    color: red;
+}
+
+.actual-price{
+    font-size: 35px;
+    margin: 0;
+    margin-left: 30px;
+}
+.price{
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    
+}
+.arrow{
+    margin: 0;
+    padding: 0;
+    margin-right: 100px;
+
+    text-align: center;
+    i{
+      font-size: 50px;
+      margin-bottom: 50px;
+      padding-bottom: 50px;
+    }
+}
+.selected-stock{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+
+}
+.percentage{
+    margin-right: 35px;
+    font-size: 20px;
+}
+
