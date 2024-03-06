@@ -1,0 +1,104 @@
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-straight/css/uicons-solid-straight.css');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+
+.dashboard-navbar {
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    height: 5rem;
+    
+    .dashboard-navbar-left {
+        display: flex;
+        align-items: center;
+
+        .fi {
+            font-size: 2rem;
+            margin: 1.2rem;
+        }
+        
+        .dashboard-name {
+            font-size: 2rem;
+        }
+    }
+
+
+
+
+    
+    @media screen and (width > 450px) {
+    .dashboard-navbar-right {
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+
+        .dashboard-summarizer,
+        .my-portfolio {
+            font-size: 2rem;
+            margin-top: 1.1rem;
+            margin-right: 1.1rem;
+        }
+    }
+
+    .hamburger-icon-mobile{
+        display: none;
+    }
+    .show-class{
+        display: none;
+        background-color: aqua;
+    }
+
+    .dashboard-options{
+        display: flex;
+    }
+}
+
+.dashboard-options {
+    display: flex;
+    justify-content: flex-start;
+
+    .explore,
+    .my-watchlist {
+        font-size: 1.5rem;
+        margin-right: 1.5rem;
+    }
+}
+
+
+}
+.show-class{
+    display: none;
+}
+
+@media screen and (width <= 450px) {
+    .dashboard-navbar-right {
+        display: none;
+    }
+    .hamburger-icon-mobile{
+        display:block;
+        font-size: large;
+        margin-top: 1.5rem;
+        margin-left: 1.1rem;
+    }
+    .show-class{
+        display: none;
+    }
+
+    .show{
+        display: block;
+    }
+
+}
+.dashboard-option {
+    display: flex;
+}
+
+.explore, .my-watchlist {
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: larger;
+}
+
+.active {
+    border-bottom: 3px solid blue;
+}

@@ -1,0 +1,344 @@
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+.stock-container {
+    display: flex;
+    justify-content: space-between;
+    height: 80vh;
+  }
+  
+  .stock-container-left {
+    width: 75%;
+    height: 100%;
+  
+    .stock-container-left-header {
+      display: flex;
+      height: 15%;
+      width: 100%;
+  
+      .stock-container-left-stock-name {
+        width: 15%;
+        height: 3rem;
+        flex-grow: 1;
+        border: 1px solid black;
+        padding-left: 1rem;
+        margin: 1.5rem;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+  
+        .arrow-icon {
+          margin-left: auto;
+          margin-right: 10px;
+        }
+  
+        .options-dropdown {
+          position: absolute;
+          top: calc(100% + 5px);
+          left: 0;
+          width: 100%;
+          max-height: 200px;
+          overflow-y: auto;
+          background-color: #f9f9f9;
+          border: 1px solid #ccc;
+          border-top: none;
+          z-index: 1;
+          display: none;
+  
+          .option-item {
+            padding: 0.5rem;
+            cursor: pointer;
+  
+            &:hover {
+              background-color: #ddd;
+            }
+          }
+        }
+  
+        &.show-dropdown .options-dropdown {
+          display: block;
+        }
+      }
+  
+      .stock-container-left-price {
+        width: 38%;
+        height: 3rem;
+        flex-grow: 1;
+        padding-left: 1rem;
+        border: 1px solid black;
+        margin: 1.5rem;
+      }
+  
+      .stock-container-left-quantity {
+        width: 15%;
+        height: 3rem;
+        flex-grow: 1;
+        border: 1px solid black;
+        margin: 1.5rem;
+  
+        input {
+          width: 100%;
+          height: 100%;
+          padding: 0.5rem;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          transition: border-color 0.3s;
+          outline: none;
+  
+          &:focus {
+            border-color: #007bff;
+          }
+        }
+      }
+  
+      .stock-container-left-buy,
+      .stock-container-left-sell {
+        width: auto;
+        height: 80%;
+        flex-grow: 1;
+        border: 1px solid #000;
+        margin: 1rem;
+        align-self: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+
+      .stock-container-left-buy{
+        background-color: #b2f2bb;
+        text-align: center;
+        align-items: center;
+        font-size: large;
+      }
+      .stock-container-left-sell{
+        background-color: #ffc9c9;
+        text-align: center;
+        font-size: large;
+      }
+    }
+  
+    .stock-container-left-graph {
+      border: 1px solid black;
+      flex-grow: 1;
+      height: 85.5%;
+      margin: 0 1.5rem 1.5rem 1.5rem;
+    }
+  }
+  
+  .stock-container-right {
+    width: 25%;
+  
+    .user-history,
+    .global-history {
+      height: 47%;
+      margin: 1rem 2rem 1rem 2rem;
+      border: 1px solid black;
+      overflow-y: auto;
+    }
+  
+    .global-history {
+      margin-top: 0;
+      height:49%
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    li {
+        margin: 1.1rem;
+  
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+
+
+  .stock-container-left-graph {
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid black;
+    height: 85.5%;
+    margin: 0 1.5rem 1.5rem 1.5rem;
+    flex-direction: row-reverse; 
+  }
+  
+  .bar {
+    width: 20px;
+    
+    
+  }
+  .stock-container-left-graph {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-end; 
+    height: 300px;
+    color: greenyellow
+}
+.stock-container-left-graph {
+    position: relative;
+    width: calc(100% - 3rem); 
+    height: 100%;
+}
+.grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.horizontal-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    border-top: 1px dashed rgba(169, 169, 169, 0.987); 
+}
+
+.vertical-line {
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    border-left: 1px dashed rgb(169, 169, 169); 
+}
+
+
+.left-side-user-history{
+    justify-content: space-between;
+    
+    border-radius: 10px;
+    .quantity{
+        font-size: larger;
+        font-weight: 500;
+    }
+
+}
+.right-side-user-history{
+    .Buy{
+        font-size: larger;
+        color: #2f9c44;
+        margin:2rem;
+    }
+    .Sell{
+        font-size: larger;
+        color: #e03131;
+        margin:2rem;
+    }
+}
+
+.user-history-container{
+    display: flex;
+    border:2px solid #000;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 10px;
+    li{
+        border:none;
+    }
+}
+.user-history{
+    h2{
+        margin-left: 2rem;
+    }
+}
+
+.global-history{
+    h2{
+        margin-left: 2rem;
+    }
+    .info{
+        font-size: large;
+        font-weight: 500;
+        p{
+            margin: 0;
+        }
+    }
+    .time{
+        p{
+            margin: 0;
+        }
+    }
+}
+.stock-container-left-quantity{
+    input{
+        text-align: center;
+    }
+}
+
+.stock-container-left-stock-name{
+    .symbol{
+        margin-right:1.1rem;
+        width: 2.5rem;
+        text-align: center;
+        border:0.5px solid orangered;
+        background-color: orange;
+    }
+}
+
+.stock-container-left-price {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.up-arrow {
+    color: green;
+}
+
+.down-arrow {
+    color: red;
+}
+
+.actual-price{
+    font-size: 35px;
+    margin: 0;
+    margin-left: 30px;
+}
+.price{
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    
+}
+.arrow{
+    margin: 0;
+    padding: 0;
+    margin-right: 100px;
+
+    text-align: center;
+    i{
+      font-size: 50px;
+      margin-bottom: 50px;
+      padding-bottom: 50px;
+    }
+}
+.selected-stock{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+
+}
+.percentage{
+    margin-right: 35px;
+    font-size: 20px;
+}
+
