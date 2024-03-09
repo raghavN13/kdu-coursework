@@ -1,0 +1,22 @@
+.item-header-container{
+    margin: 2rem 1rem 1rem 1rem;
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .add-header-text{
+        margin-bottom:0.5rem;
+        font-weight: 600;
+        font-size:32px;
+    }
+    .text-input{
+        input{
+            height: 2rem;
+
+        }
+        button{
+            height: 2.5rem;
+            background-color: black;
+            color: white;
+        }
+    }
+}
