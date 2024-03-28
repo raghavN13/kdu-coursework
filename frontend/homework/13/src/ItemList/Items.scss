@@ -1,0 +1,73 @@
+.main-container{
+    background-color: whitesmoke
+}
+
+.kdu-store{
+    text-align: center;
+    color: rgb(52, 52, 237);
+    font-weight: bolder;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    margin-top: 5rem;
+
+}
+
+
+.items-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: whitesmoke;
+
+    .item {
+        width: 20%;
+        height: auto;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 2rem 1rem;
+        background-color: white;
+        cursor: pointer;
+
+        img {
+            height: auto;
+            width: 60%;
+        }
+
+        .description {
+            display: none;
+        }
+
+        .category {
+            display: none;
+        }
+
+
+        .show {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            padding: 0 2rem;
+            .price{
+                flex-grow: 1;
+                text-align: end;
+                font-weight: bold;
+                padding-top: 0.35rem;
+            }
+            .title{
+                flex-grow: 1;
+            }
+        }
+
+        .show h3,
+        .show p {
+            flex: 1; /* Take equal space */
+            width: 50%; /* Initial width for equal space */
+            overflow: hidden; /* Hide overflow text */
+            text-overflow: ellipsis; /* Add ellipsis for long text */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+    }
+}
