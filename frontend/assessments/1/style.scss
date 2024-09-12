@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: rgb(250,160,165);
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+  /* 1.6*10 = 16px */
+  font-size: 1.6rem;
+  color: whitesmoke;
+}
+
+h1,
+h2,
+p {
+  margin: 1.6rem 0;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 3.6rem;
+}
+
+nav h1 {
+  margin-top: 0;
+  color: white;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 2.4rem;
+}
+
+
+
+img {
+  height:70%;
+  height: auto;
+}
+
+.rowone {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+  margin: auto;
+}
+.rowtwo {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width:auto;
+  align-items: center;
+  margin: auto;
+  
+
+}
+#first{
+    font-size: 7rem;
+    font-weight: bold;
+    color: whitesmoke;
+    margin:0 1.8rem;
+    
+}
+#second{
+    font-size: 7rem;
+    font-weight: bold;
+    color: whitesmoke;
+    
+    margin:1.8rem;
+}
+#third{
+    font-size:2.5rem;
+    color: whitesmoke;
+    font-weight: bold;
+    margin:1rem 1.8rem;
+}
+#startbutton {
+    background-color: rgb(190,83,103);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2.5rem;
+    margin:3rem;
+    border-radius: 5px;
+  }
+
+
+
+section {
+  padding: 100px 0;
+}
+
+nav {
+  padding: 2% 8%;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav box-icon {
+  display: none;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-left: 2.5rem;
+}
+
+nav ul li a:hover {
+  color: #4CAF50;
+  transition: 0.5s ease-in-out;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .rowone {
+    flex-direction: column;
+  }
+  .rowtwo{
+    flex-direction: column-reverse;
+    
+  }
+  nav {
+    flex-direction: column;
+    position: relative;
+  }
+  nav box-icon {
+    display: block;
+    position: absolute;
+    background-color: pink;
+    top: 18px;
+    right: 32px;
+  }
+  nav ul {
+    display: none;
+  }
+  .showmenu {
+    display: block;
+  }
+  nav ul li {
+    display: block;
+    padding: 2% 0;
+  }
+  nav ul li a {
+    color: #222;
+  }
+}/*# sourceMappingURL=style.css.map */
