@@ -1,0 +1,15 @@
+.header-items {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  background-color: rgb(49, 214, 49);
+  font-size: 40px;
+  font-weight: bold;
+}
+.header-items #search {
+  height: 2.5rem;
+}
+.header-items input {
+  width: 50%;
+  align-self: center;
+}/*# sourceMappingURL=Header.css.map */
