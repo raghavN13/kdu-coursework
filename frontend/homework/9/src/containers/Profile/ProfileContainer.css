@@ -1,0 +1,12 @@
+.profile-container {
+  background-color: rgb(255, 230, 140);
+  height: 100vh;
+  padding-left: 40px;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.child-container {
+  display: flex;
+  justify-content: space-around;
+}/*# sourceMappingURL=ProfileContainer.css.map */
