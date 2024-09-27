@@ -1,0 +1,152 @@
+body{
+    background-color: antiquewhite;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+body > p{
+    font-size: large;
+}
+.aboutme{
+    border: 50px solid black;
+    margin:50px;
+}
+.about {
+    position: relative;
+    height:50px;
+}
+img{
+    height: 250px;
+    margin-bottom: 0;
+    width:250px;
+    border-radius: 50%;
+}
+
+#name {
+    display: inline-block;
+    position:absolute;
+    font-family:monospace;
+    font-weight: 500;
+    font-size: x-large;
+    left:0;
+    top: 0;
+}
+aside{
+    padding-top: 0;
+    padding-left: 87px;
+    margin-top: 0;
+}
+#photo img{
+    border: 0.5px solid black;
+}
+
+#photo {
+    display:inline-block;
+    position: absolute;
+    right:0;
+
+}
+
+.information {
+    clear: both; /* Clear the floats to prevent overlap */
+    margin-top: 50px; /* Add margin-top to create space below the name and photo */
+    font-size: large;
+    font-family: monospace;
+}
+.information p::first-line{
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.information > *{
+    margin: 20px; 
+}
+ol > *{
+    margin:10px;
+    font-weight: 500;
+}
+ul >*{
+    margin:10px;
+    font-weight: 500;
+}
+a:link{
+color: black;
+}
+a:visited{
+    color:blue;
+}
+h3 + p{
+    font-weight: 500;
+    font-family: monospace;
+    font-size: large;
+}
+.register ,.aboutme{
+    margin:50px;
+    padding:10px;
+    border : 1px solid black;
+    
+}
+.register{
+    text-align: center;
+}
+
+section >* {
+    margin:10px;
+    padding:5px;
+
+}
+button{
+    margin: 10px;
+    padding : 5px;
+}
+label{
+    font-size: large;
+    font-family: monospace;
+    box-sizing: content-box;
+
+}
+.contactme {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contactme p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+button {
+    display: inline-block;
+    padding: 10px 20x;
+    font-size: 16px;
+    background-color:rgb(176, 114, 150);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: gray;
+}
+
+
+.contactme a {
+    display: inline-block;
+    font-size: x-large;
+    padding: 10px 20px;
+    color: rgb(39, 28, 28);
+    text-decoration: none;
+    border-radius: 5px;
+}
+pre{
+    font-size: xx-large;
+}
+#name::first-line {
+    font-size: 150%;
+    color: #6c5651; 
+    font-weight: bold; 
+}
+
+
+
+
+
